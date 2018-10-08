@@ -1,0 +1,2 @@
+SQLAlchemy>=1.2
+message>=0.2.1

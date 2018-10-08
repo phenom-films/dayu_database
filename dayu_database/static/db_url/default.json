@@ -1,0 +1,8 @@
+{
+  "drivername": "postgres",
+  "username": "db_user",
+  "password": "xx",
+  "host": "xx.xx.xx.xx",
+  "port": 5432,
+  "database": "dayu_production"
+}

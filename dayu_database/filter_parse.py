@@ -15,12 +15,12 @@ __doc__ = \
     
     '''
 
-import re
-import datetime
 import collections
+import datetime
 
 from sqlalchemy import and_, or_, not_, inspect
 from sqlalchemy.orm.properties import RelationshipProperty, ColumnProperty
+
 import util
 
 # 关键字函数定义
@@ -72,8 +72,7 @@ def _resolve_token_today(*args, **kwargs):
 
 
 def _resolve_token_current_user(*args, **kwargs):
-    import db.util
-    return db.util.current_user_name()
+    return util.current_user_name()
 
 
 def _resolve_token_now(*args, **kwargs):

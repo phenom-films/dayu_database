@@ -77,11 +77,11 @@ VIEW_PERMISSION 提供了对VIEW 共享的控制。适用于下面使用场景�
 
 '''
 
-import sqlalchemy
-import sqlalchemy.orm
-import sqlalchemy.event
-import sqlalchemy.inspection
-import sqlalchemy.orm.properties
+from sqlalchemy import Table, Column, String, BigInteger, Integer, Float, Date, Boolean, ForeignKey, and_
+from sqlalchemy.orm import deferred, relationship, backref, remote, foreign
+from sqlalchemy.event import listens_for
+from sqlalchemy.inspection import inspect
+# from sqlalchemy.orm.properties import
 
 import base
 import mixin
@@ -92,103 +92,103 @@ version_regex = re.compile(r'.*[vV](\d+).*')
 
 
 class THUMBNAIL(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.CloudMixin, mixin.UserMixin):
-    hook_table = sqlalchemy.Column(sqlalchemy.String, index=True)
-    hook_id = sqlalchemy.Column(sqlalchemy.BigInteger, index=True)
+    hook_table = Column(String, index=True)
+    hook_id = Column(BigInteger, index=True)
 
 
-task_user_association_table = sqlalchemy.Table('task_user_association',
-                                               base.BASE.metadata,
-                                               sqlalchemy.Column('task_id', sqlalchemy.BigInteger,
-                                                                 sqlalchemy.ForeignKey('task.id'),
-                                                                 primary_key=True, index=True),
-                                               sqlalchemy.Column('user_id', sqlalchemy.BigInteger,
-                                                                 sqlalchemy.ForeignKey('user.id'),
-                                                                 primary_key=True, index=True))
+task_user_association_table = Table('task_user_association',
+                                    base.BASE.metadata,
+                                    Column('task_id', BigInteger,
+                                           ForeignKey('task.id'),
+                                           primary_key=True, index=True),
+                                    Column('user_id', BigInteger,
+                                           ForeignKey('user.id'),
+                                           primary_key=True, index=True))
 
 
 class STATUS(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.CloudMixin, mixin.UserMixin):
-    name = sqlalchemy.Column(sqlalchemy.String, unique=True)
+    name = Column(String, unique=True)
 
 
 class TASK(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.CloudMixin, mixin.UserMixin):
-    project_id = sqlalchemy.Column(sqlalchemy.BigInteger, index=True)
-    entity_id = sqlalchemy.Column(sqlalchemy.BigInteger, index=True)
-    bid = sqlalchemy.Column(sqlalchemy.FLOAT, default=0.0)
-    start_date = sqlalchemy.Column(sqlalchemy.Date)
-    end_date = sqlalchemy.Column(sqlalchemy.Date)
-    status_name = sqlalchemy.Column(sqlalchemy.String, index=True)
-    step_name = sqlalchemy.Column(sqlalchemy.String, index=True)
+    project_id = Column(BigInteger, index=True)
+    entity_id = Column(BigInteger, index=True)
+    bid = Column(Float, default=0.0)
+    start_date = Column(Date)
+    end_date = Column(Date)
+    status_name = Column(String, index=True)
+    step_name = Column(String, index=True)
 
 
 class TIMELOG(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.CloudMixin, mixin.UserMixin):
-    duration = sqlalchemy.Column(sqlalchemy.FLOAT, default=0.0)
-    work_date = sqlalchemy.Column(sqlalchemy.Date)
-    task_id = sqlalchemy.orm.deferred(sqlalchemy.Column(sqlalchemy.BigInteger, index=True))
-    user_name = sqlalchemy.Column(sqlalchemy.String, index=True)
+    duration = Column(Float, default=0.0)
+    work_date = Column(Date)
+    task_id = deferred(Column(BigInteger, index=True))
+    user_name = Column(String, index=True)
 
 
-note_user_to_association_table = sqlalchemy.Table('note_user_to_association',
-                                                  base.BASE.metadata,
-                                                  sqlalchemy.Column('note_id', sqlalchemy.BigInteger,
-                                                                    sqlalchemy.ForeignKey('note.id'),
-                                                                    primary_key=True, index=True),
-                                                  sqlalchemy.Column('user_id', sqlalchemy.BigInteger,
-                                                                    sqlalchemy.ForeignKey('user.id'),
-                                                                    primary_key=True, index=True))
+note_user_to_association_table = Table('note_user_to_association',
+                                       base.BASE.metadata,
+                                       Column('note_id', BigInteger,
+                                              ForeignKey('note.id'),
+                                              primary_key=True, index=True),
+                                       Column('user_id', BigInteger,
+                                              ForeignKey('user.id'),
+                                              primary_key=True, index=True))
 
-note_user_cc_association_table = sqlalchemy.Table('note_user_cc_association',
-                                                  base.BASE.metadata,
-                                                  sqlalchemy.Column('note_id', sqlalchemy.BigInteger,
-                                                                    sqlalchemy.ForeignKey('note.id'),
-                                                                    primary_key=True, index=True),
-                                                  sqlalchemy.Column('user_id', sqlalchemy.BigInteger,
-                                                                    sqlalchemy.ForeignKey('user.id'),
-                                                                    primary_key=True, index=True))
+note_user_cc_association_table = Table('note_user_cc_association',
+                                       base.BASE.metadata,
+                                       Column('note_id', BigInteger,
+                                              ForeignKey('note.id'),
+                                              primary_key=True, index=True),
+                                       Column('user_id', BigInteger,
+                                              ForeignKey('user.id'),
+                                              primary_key=True, index=True))
 
 
 class NOTE(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.CloudMixin, mixin.UserMixin):
-    comment = sqlalchemy.Column(sqlalchemy.String)
-    task_id = sqlalchemy.orm.deferred(sqlalchemy.Column(sqlalchemy.BigInteger, index=True))
-    from_user_name = sqlalchemy.Column(sqlalchemy.String, index=True)
+    comment = Column(String)
+    task_id = deferred(Column(BigInteger, index=True))
+    from_user_name = Column(String, index=True)
 
-    hook_table = sqlalchemy.Column(sqlalchemy.String, index=True)
-    hook_id = sqlalchemy.Column(sqlalchemy.BigInteger, index=True)
+    hook_table = Column(String, index=True)
+    hook_id = Column(BigInteger, index=True)
 
 
-user_department_association_table = sqlalchemy.Table('user_department_association',
-                                                     base.BASE.metadata,
-                                                     sqlalchemy.Column('user_id', sqlalchemy.BigInteger,
-                                                                       sqlalchemy.ForeignKey('user.id'),
-                                                                       primary_key=True, index=True),
-                                                     sqlalchemy.Column('department_id', sqlalchemy.BigInteger,
-                                                                       sqlalchemy.ForeignKey('department.id'),
-                                                                       primary_key=True, index=True))
+user_department_association_table = Table('user_department_association',
+                                          base.BASE.metadata,
+                                          Column('user_id', BigInteger,
+                                                 ForeignKey('user.id'),
+                                                 primary_key=True, index=True),
+                                          Column('department_id', BigInteger,
+                                                 ForeignKey('department.id'),
+                                                 primary_key=True, index=True))
 
 
 class AUTHORIZATION(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.CloudMixin, mixin.UserMixin):
     '''
     用户存放用户信息的table
     '''
-    name = sqlalchemy.Column(sqlalchemy.String, unique=True)
+    name = Column(String, unique=True)
 
 
 class DEPARTMENT(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.CloudMixin, mixin.UserMixin):
     '''
     用户存放用户信息的table
     '''
-    name = sqlalchemy.Column(sqlalchemy.String, unique=True)
+    name = Column(String, unique=True)
 
 
 class USER(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.CloudMixin, mixin.UserMixin):
     '''
     用户存放用户信息的table
     '''
-    name = sqlalchemy.Column(sqlalchemy.String, unique=True)
-    full_name = sqlalchemy.Column(sqlalchemy.String)
-    email = sqlalchemy.orm.deferred(sqlalchemy.Column(sqlalchemy.String))
-    phone = sqlalchemy.orm.deferred(sqlalchemy.Column(sqlalchemy.String))
-    avatar = sqlalchemy.orm.deferred(sqlalchemy.Column(sqlalchemy.String))
-    authorization_name = sqlalchemy.orm.deferred(sqlalchemy.Column(sqlalchemy.String))
+    name = Column(String, unique=True)
+    full_name = Column(String)
+    email = deferred(Column(String))
+    phone = deferred(Column(String))
+    avatar = deferred(Column(String))
+    authorization_name = deferred(Column(String))
 
 
 class STORAGE(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.UserMixin):
@@ -197,7 +197,7 @@ class STORAGE(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.UserM
     每一行对应一个storage 的配置，具体的配置存放在extra_data 中。
     （参考 db.born.StorageConfigManager）
     '''
-    name = sqlalchemy.Column(sqlalchemy.String, unique=True)
+    name = Column(String, unique=True)
     pass
 
 
@@ -207,7 +207,7 @@ class DB_CONFIG(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.Use
     这个table 的内容非常重要，如何对FOLDER、FILE 的层级结构进行自我解释，都需要这个。
     （参考：db.born.DbConfigManager）
     '''
-    name = sqlalchemy.Column(sqlalchemy.String, unique=True)
+    name = Column(String, unique=True)
     pass
 
 
@@ -217,7 +217,7 @@ class PIPELINE_CONFIG(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mix
     这个table 的内容非常重要，如何对FOLDER、FILE 的层级结构进行自我解释，都需要这个。
     （参考：db.born.PipelineConfigManager）
     '''
-    name = sqlalchemy.Column(sqlalchemy.String, unique=True)
+    name = Column(String, unique=True)
     pass
 
 
@@ -227,7 +227,7 @@ class PIPELINE_CONFIG(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mix
 #     这个table 的内容非常重要，如何对FOLDER、FILE 的层级结构进行自我解释，都需要这个。
 #     （参考：db.born.WorkflowConfigManger）
 #     '''
-#     name = sqlalchemy.Column(sqlalchemy.String, unique=True)
+#     name = Column(String, unique=True)
 #     pass
 
 
@@ -241,9 +241,9 @@ class JOB(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.UserMixin
 
     （参考 job center）
     '''
-    priority = sqlalchemy.Column(sqlalchemy.Integer, default=50)
-    hook_table = sqlalchemy.Column(sqlalchemy.String, index=True)
-    hook_id = sqlalchemy.Column(sqlalchemy.BigInteger, index=True)
+    priority = Column(Integer, default=50)
+    hook_table = Column(String, index=True)
+    hook_id = Column(BigInteger, index=True)
 
 
 class SEARCH_PERMISSION(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.UserMixin):
@@ -251,12 +251,12 @@ class SEARCH_PERMISSION(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, m
     用于控制分享的SEARCH。
     如果用户想要把一个SEARCH 分享给其他用户，代码级别是创建一个SEARCH_PERMISSION。并把需要分享的用户 赋值到 shared_user 属性上。
     '''
-    search_id = sqlalchemy.Column(sqlalchemy.BigInteger, index=True)
-    shared_user_name = sqlalchemy.Column(sqlalchemy.String, index=True)
-    can_view = sqlalchemy.Column(sqlalchemy.Boolean, default=True)
-    can_edit = sqlalchemy.Column(sqlalchemy.Boolean, default=False)
-    can_delete = sqlalchemy.Column(sqlalchemy.Boolean, default=False)
-    can_share = sqlalchemy.Column(sqlalchemy.Boolean, default=False)
+    search_id = Column(BigInteger, index=True)
+    shared_user_name = Column(String, index=True)
+    can_view = Column(Boolean, default=True)
+    can_edit = Column(Boolean, default=False)
+    can_delete = Column(Boolean, default=False)
+    can_share = Column(Boolean, default=False)
 
 
 class SEARCH(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.UserMixin):
@@ -271,13 +271,13 @@ class VIEW_PERMISSION(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mix
     用于控制分享的VIEW。
     如果用户想要把一个VIEW 分享给其他用户，代码级别是创建一个VIEW_PERMISSION。并把需要分享的用户 赋值到 shared_user 属性上。
     '''
-    view_id = sqlalchemy.Column(sqlalchemy.BigInteger, index=True)
-    shared_user_name = sqlalchemy.Column(sqlalchemy.String, index=True)
+    view_id = Column(BigInteger, index=True)
+    shared_user_name = Column(String, index=True)
     # 用于表示被分享的user，是否可以 查看、修改、删除、二次分享
-    can_view = sqlalchemy.Column(sqlalchemy.Boolean, default=True)
-    can_edit = sqlalchemy.Column(sqlalchemy.Boolean, default=False)
-    can_delete = sqlalchemy.Column(sqlalchemy.Boolean, default=False)
-    can_share = sqlalchemy.Column(sqlalchemy.Boolean, default=False)
+    can_view = Column(Boolean, default=True)
+    can_edit = Column(Boolean, default=False)
+    can_delete = Column(Boolean, default=False)
+    can_share = Column(Boolean, default=False)
 
 
 class VIEW(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.UserMixin):
@@ -293,8 +293,8 @@ class SYMBOL(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.UserMi
     相当于文件系统中的 symbol link。一定程度上可以理解为"快捷方式"。
     可以对FOLDER、FILE 进行软连接。
     '''
-    origin_table = sqlalchemy.Column(sqlalchemy.String, index=True)
-    origin_id = sqlalchemy.Column(sqlalchemy.BigInteger, index=True)
+    origin_table = Column(String, index=True)
+    origin_id = Column(BigInteger, index=True)
 
 
 class INFO(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.UserMixin):
@@ -306,8 +306,8 @@ class INFO(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.UserMixi
     * QC 这类的解释性信息，大部分情况下即使获得了orm，也可能不需要读取，只在某些特定的情况下需要。
         那么推荐保存为一个INFO 对象，然后hook 到相应的orm 上。这样可以加速一般访问时的数据库查询
     '''
-    hook_table = sqlalchemy.Column(sqlalchemy.String, index=True)
-    hook_id = sqlalchemy.Column(sqlalchemy.BigInteger, index=True)
+    hook_table = Column(String, index=True)
+    hook_id = Column(BigInteger, index=True)
 
     @property
     def hook(self):
@@ -328,7 +328,7 @@ class INFO(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.UserMixi
         self.hook_id = value.id
 
 
-@sqlalchemy.event.listens_for(mixin.InfoMixin, 'mapper_configured', propagate=True)
+@listens_for(mixin.InfoMixin, 'mapper_configured', propagate=True)
 def setup_info_listener(mapper, _class):
     '''
     利用sqlalchemy 的监听机制，实现对 继承InfoMixin 的class 动态添加.infos 属性
@@ -337,42 +337,42 @@ def setup_info_listener(mapper, _class):
     :return:
     '''
     hook_type = _class.__name__.lower()
-    _class.infos = sqlalchemy.orm.relationship('INFO',
-                                               primaryjoin=sqlalchemy.and_(_class.id == sqlalchemy.orm.foreign(
-                                                       sqlalchemy.orm.remote(INFO.hook_id)),
-                                                                           INFO.hook_table == hook_type),
-                                               order_by='INFO.name',
-                                               lazy='dynamic',
-                                               backref=sqlalchemy.orm.backref('hook_{0}'.format(hook_type),
-                                                                              primaryjoin=sqlalchemy.orm.remote(
-                                                                                      _class.id) == sqlalchemy.orm.foreign(
-                                                                                      INFO.hook_id))
-                                               )
+    _class.infos = relationship('INFO',
+                                primaryjoin=and_(_class.id == foreign(
+                                        remote(INFO.hook_id)),
+                                                 INFO.hook_table == hook_type),
+                                order_by='INFO.name',
+                                lazy='dynamic',
+                                backref=backref('hook_{0}'.format(hook_type),
+                                                primaryjoin=remote(
+                                                        _class.id) == foreign(
+                                                        INFO.hook_id))
+                                )
 
-    @sqlalchemy.event.listens_for(_class.infos, 'append')
+    @listens_for(_class.infos, 'append')
     def append_infos(target, value, initiator):
         value.hook_table = hook_type
 
 
 # TAG 和 FOLDER 之间的链接表， 提供TAG.folders 和 FOLDER.tags
-tag_folder_association_table = sqlalchemy.Table('tag_folder_association',
-                                                base.BASE.metadata,
-                                                sqlalchemy.Column('tag_id', sqlalchemy.BigInteger,
-                                                                  sqlalchemy.ForeignKey('tag.id'),
-                                                                  primary_key=True, index=True),
-                                                sqlalchemy.Column('folder_id', sqlalchemy.BigInteger,
-                                                                  sqlalchemy.ForeignKey('folder.id'),
-                                                                  primary_key=True, index=True))
+tag_folder_association_table = Table('tag_folder_association',
+                                     base.BASE.metadata,
+                                     Column('tag_id', BigInteger,
+                                            ForeignKey('tag.id'),
+                                            primary_key=True, index=True),
+                                     Column('folder_id', BigInteger,
+                                            ForeignKey('folder.id'),
+                                            primary_key=True, index=True))
 
 # TAG 和 FILE 之间的连接表，提供TAG.files 和 FILE.tags
-tag_file_association_table = sqlalchemy.Table('tag_file_association',
-                                              base.BASE.metadata,
-                                              sqlalchemy.Column('tag_id', sqlalchemy.BigInteger,
-                                                                sqlalchemy.ForeignKey('tag.id'),
-                                                                primary_key=True, index=True),
-                                              sqlalchemy.Column('file_id', sqlalchemy.BigInteger,
-                                                                sqlalchemy.ForeignKey('file.id'),
-                                                                primary_key=True, index=True))
+tag_file_association_table = Table('tag_file_association',
+                                   base.BASE.metadata,
+                                   Column('tag_id', BigInteger,
+                                          ForeignKey('tag.id'),
+                                          primary_key=True, index=True),
+                                   Column('file_id', BigInteger,
+                                          ForeignKey('file.id'),
+                                          primary_key=True, index=True))
 
 
 class TAG(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.UserMixin):
@@ -381,8 +381,8 @@ class TAG(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.UserMixin
     可以为用户提供基于TAG 搜索的能力。只要用户将某写FOLDER、FILES 打上标签，那么就可以通过TAG 进行快速搜索。
     （参考Mac OS X 的Finder，可以对文件进行标签）
     '''
-    name = sqlalchemy.Column(sqlalchemy.String, unique=True)
-    color = sqlalchemy.Column(sqlalchemy.Integer, default=lambda: random.randint(0, 4294967295))
+    name = Column(String, unique=True)
+    color = Column(Integer, default=lambda: random.randint(0, 4294967295))
 
 
 class PACKAGE(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.UserMixin):
@@ -393,14 +393,14 @@ class PACKAGE(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.UserM
     pass
 
 
-type_type_group_association_table = sqlalchemy.Table('type_type_group_association',
-                                                     base.BASE.metadata,
-                                                     sqlalchemy.Column('type_id', sqlalchemy.BigInteger,
-                                                                       sqlalchemy.ForeignKey('type.id'),
-                                                                       primary_key=True, index=True),
-                                                     sqlalchemy.Column('type_group_id', sqlalchemy.BigInteger,
-                                                                       sqlalchemy.ForeignKey('type_group.id'),
-                                                                       primary_key=True, index=True))
+type_type_group_association_table = Table('type_type_group_association',
+                                          base.BASE.metadata,
+                                          Column('type_id', BigInteger,
+                                                 ForeignKey('type.id'),
+                                                 primary_key=True, index=True),
+                                          Column('type_group_id', BigInteger,
+                                                 ForeignKey('type_group.id'),
+                                                 primary_key=True, index=True))
 
 
 class TYPE(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.UserMixin):
@@ -424,41 +424,41 @@ class TYPE_GROUP(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.Us
 
 
 # folder 和 folder 自身的多对多链接表
-folder_folder_association_table = sqlalchemy.Table('folder_folder_association',
-                                                   base.BASE.metadata,
-                                                   sqlalchemy.Column('left_folder_id', sqlalchemy.BigInteger,
-                                                                     sqlalchemy.ForeignKey('folder.id'),
-                                                                     primary_key=True, index=True),
-                                                   sqlalchemy.Column('right_folder_id', sqlalchemy.BigInteger,
-                                                                     sqlalchemy.ForeignKey('folder.id'),
-                                                                     primary_key=True, index=True))
+folder_folder_association_table = Table('folder_folder_association',
+                                        base.BASE.metadata,
+                                        Column('left_folder_id', BigInteger,
+                                               ForeignKey('folder.id'),
+                                               primary_key=True, index=True),
+                                        Column('right_folder_id', BigInteger,
+                                               ForeignKey('folder.id'),
+                                               primary_key=True, index=True))
 # folder 和file 的多对多链接表
-folder_file_association_table = sqlalchemy.Table('folder_file_association',
-                                                 base.BASE.metadata,
-                                                 sqlalchemy.Column('left_folder_id', sqlalchemy.BigInteger,
-                                                                   sqlalchemy.ForeignKey('folder.id'),
-                                                                   primary_key=True, index=True),
-                                                 sqlalchemy.Column('right_file_id', sqlalchemy.BigInteger,
-                                                                   sqlalchemy.ForeignKey('file.id'),
-                                                                   primary_key=True, index=True))
+folder_file_association_table = Table('folder_file_association',
+                                      base.BASE.metadata,
+                                      Column('left_folder_id', BigInteger,
+                                             ForeignKey('folder.id'),
+                                             primary_key=True, index=True),
+                                      Column('right_file_id', BigInteger,
+                                             ForeignKey('file.id'),
+                                             primary_key=True, index=True))
 # folder 和package 之间的多对多链接表
-folder_package_association_table = sqlalchemy.Table('folder_package_association',
-                                                    base.BASE.metadata,
-                                                    sqlalchemy.Column('left_folder_id', sqlalchemy.BigInteger,
-                                                                      sqlalchemy.ForeignKey('folder.id'),
-                                                                      primary_key=True, index=True),
-                                                    sqlalchemy.Column('right_package_id', sqlalchemy.BigInteger,
-                                                                      sqlalchemy.ForeignKey('package.id'),
-                                                                      primary_key=True, index=True))
+folder_package_association_table = Table('folder_package_association',
+                                         base.BASE.metadata,
+                                         Column('left_folder_id', BigInteger,
+                                                ForeignKey('folder.id'),
+                                                primary_key=True, index=True),
+                                         Column('right_package_id', BigInteger,
+                                                ForeignKey('package.id'),
+                                                primary_key=True, index=True))
 # folder 和view 之间的多对多链接表
-folder_view_association_table = sqlalchemy.Table('folder_view_association',
-                                                 base.BASE.metadata,
-                                                 sqlalchemy.Column('left_folder_id', sqlalchemy.BigInteger,
-                                                                   sqlalchemy.ForeignKey('folder.id'),
-                                                                   primary_key=True, index=True),
-                                                 sqlalchemy.Column('right_view_id', sqlalchemy.BigInteger,
-                                                                   sqlalchemy.ForeignKey('view.id'),
-                                                                   primary_key=True, index=True))
+folder_view_association_table = Table('folder_view_association',
+                                      base.BASE.metadata,
+                                      Column('left_folder_id', BigInteger,
+                                             ForeignKey('folder.id'),
+                                             primary_key=True, index=True),
+                                      Column('right_view_id', BigInteger,
+                                             ForeignKey('view.id'),
+                                             primary_key=True, index=True))
 
 
 class FOLDER(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.UserMixin, mixin.DepthMixin,
@@ -470,44 +470,44 @@ class FOLDER(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.UserMi
     整个层级结构仿照单根文件系统设计。一个FOLDER 内可以继续存放FOLDER、FILE、SYMBOL。
     但是同一个层级内部，不允许出现相同的名字！
     '''
-    comment = sqlalchemy.Column(sqlalchemy.String)
+    comment = Column(String)
 
 
-file_file_association_table = sqlalchemy.Table('file_file_association',
-                                               base.BASE.metadata,
-                                               sqlalchemy.Column('left_file_id', sqlalchemy.BigInteger,
-                                                                 sqlalchemy.ForeignKey('file.id'),
-                                                                 primary_key=True, index=True),
-                                               sqlalchemy.Column('right_file_id', sqlalchemy.BigInteger,
-                                                                 sqlalchemy.ForeignKey('file.id'),
-                                                                 primary_key=True, index=True))
+file_file_association_table = Table('file_file_association',
+                                    base.BASE.metadata,
+                                    Column('left_file_id', BigInteger,
+                                           ForeignKey('file.id'),
+                                           primary_key=True, index=True),
+                                    Column('right_file_id', BigInteger,
+                                           ForeignKey('file.id'),
+                                           primary_key=True, index=True))
 
-file_folder_association_table = sqlalchemy.Table('file_folder_association',
-                                                 base.BASE.metadata,
-                                                 sqlalchemy.Column('left_file_id', sqlalchemy.BigInteger,
-                                                                   sqlalchemy.ForeignKey('file.id'),
-                                                                   primary_key=True, index=True),
-                                                 sqlalchemy.Column('right_folder_id', sqlalchemy.BigInteger,
-                                                                   sqlalchemy.ForeignKey('folder.id'),
-                                                                   primary_key=True, index=True))
+file_folder_association_table = Table('file_folder_association',
+                                      base.BASE.metadata,
+                                      Column('left_file_id', BigInteger,
+                                             ForeignKey('file.id'),
+                                             primary_key=True, index=True),
+                                      Column('right_folder_id', BigInteger,
+                                             ForeignKey('folder.id'),
+                                             primary_key=True, index=True))
 
-file_package_association_table = sqlalchemy.Table('file_package_association',
-                                                  base.BASE.metadata,
-                                                  sqlalchemy.Column('left_file_id', sqlalchemy.BigInteger,
-                                                                    sqlalchemy.ForeignKey('file.id'),
-                                                                    primary_key=True, index=True),
-                                                  sqlalchemy.Column('right_package_id', sqlalchemy.BigInteger,
-                                                                    sqlalchemy.ForeignKey('package.id'),
-                                                                    primary_key=True, index=True))
+file_package_association_table = Table('file_package_association',
+                                       base.BASE.metadata,
+                                       Column('left_file_id', BigInteger,
+                                              ForeignKey('file.id'),
+                                              primary_key=True, index=True),
+                                       Column('right_package_id', BigInteger,
+                                              ForeignKey('package.id'),
+                                              primary_key=True, index=True))
 
-file_view_association_table = sqlalchemy.Table('file_view_association',
-                                               base.BASE.metadata,
-                                               sqlalchemy.Column('left_file_id', sqlalchemy.BigInteger,
-                                                                 sqlalchemy.ForeignKey('file.id'),
-                                                                 primary_key=True, index=True),
-                                               sqlalchemy.Column('right_view_id', sqlalchemy.BigInteger,
-                                                                 sqlalchemy.ForeignKey('view.id'),
-                                                                 primary_key=True, index=True))
+file_view_association_table = Table('file_view_association',
+                                    base.BASE.metadata,
+                                    Column('left_file_id', BigInteger,
+                                           ForeignKey('file.id'),
+                                           primary_key=True, index=True),
+                                    Column('right_view_id', BigInteger,
+                                           ForeignKey('view.id'),
+                                           primary_key=True, index=True))
 
 
 class FILE(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.UserMixin, mixin.DepthMixin,
@@ -518,7 +518,7 @@ class FILE(base.BASE, mixin.ExtraDataMixin, mixin.TimestampMixin, mixin.UserMixi
     FILE 表示数据库中逻辑的最小单位。可以理解成文件系统中的"文件"。
     FILE 不能再包含其他ORM，同时FILE 也具备SubLevel 这个class，可以不扫描硬盘就得到所包含的实际硬盘文件。
     '''
-    comment = sqlalchemy.Column(sqlalchemy.String)
+    comment = Column(String)
 
     # 用来表示版本分支的属性
-    old_file_id = sqlalchemy.orm.deferred(sqlalchemy.Column(sqlalchemy.BigInteger, index=True))
+    old_file_id = deferred(Column(BigInteger, index=True))

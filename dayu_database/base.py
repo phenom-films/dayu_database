@@ -22,7 +22,7 @@ __doc__ = \
 from sqlalchemy.ext.declarative import as_declarative, declared_attr
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.event import listens_for
-import util
+from util import snowflake, current_user_name
 
 
 @as_declarative()
@@ -43,8 +43,8 @@ class DECALARE_BASE(object):
         :return: string
         '''
         return u'<{class_name}>({orm_id}, {orm_name})'.format(class_name=self.__class__.__name__,
-                                                             orm_id=self.id,
-                                                             orm_name=self.name)
+                                                              orm_id=self.id,
+                                                              orm_name=self.name)
 
 
 # 创建Automap 的反射基类
@@ -63,7 +63,7 @@ def base_init_guid(target, args, kwargs):
     :return:
     '''
     if hasattr(target, 'id') and target.id is None:
-        target.id = util.snowflake()
+        target.id = snowflake()
 
 
 @listens_for(BASE, 'before_update', propagate=True)
@@ -77,11 +77,9 @@ def base_updated_user_name(mapper, connection, target):
     :return: None
     '''
     if hasattr(target, 'updated_by_name'):
-        target.updated_by_name = util.current_user_name()
+        target.updated_by_name = current_user_name()
 
 
 # 在真正调用prerpare() 函数进行反射之前，先导入所有预先明确定义的table mapper class。
 # 这样才能实现反射的同时，还带有自定义的各种属性（例如hook property）
 from table import *
-
-

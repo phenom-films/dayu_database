@@ -406,7 +406,10 @@ def create_project(name, template_or_project=None, custom_storage=None):
                       'env': 'Environment',
                       'mpt': 'Matte Painting',
                       'prp': 'Prop',
-                      'std': 'Standard'}
+                      'std': 'Standard',
+                      'asb': 'Assembly',
+                      'cpt': 'Concept',
+                      'veh': 'Vehicle'}
 
     metadata_seq_dict = {'lds'   : 'Lens Data',
                          'env'   : 'Environment',

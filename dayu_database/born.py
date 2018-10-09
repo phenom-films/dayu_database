@@ -31,7 +31,9 @@ __doc__ = \
     '''
 
 import json
-import unipath
+
+from dayu_path import DayuPath
+
 import util
 
 
@@ -52,7 +54,7 @@ class ConfigManagerBase(object):
         读取当前硬盘上所有DB_CONFIG 对应的json
         :return: None
         '''
-        config_path = unipath.Path(__file__).parent.child(cls.prefix + '_config_presets')
+        config_path = DayuPath(__file__).parent.child('static', cls.prefix + '_config_presets')
 
         assert config_path.exists() is True
 
@@ -228,3 +230,8 @@ class ConfigTemplateManager(object):
     @pipeline_config.setter
     def pipeline_config(self, config_string):
         self._selected_pipline_config = config_string
+
+
+if __name__ == '__main__':
+    aa = ConfigTemplateManager()
+    print aa.available_templates

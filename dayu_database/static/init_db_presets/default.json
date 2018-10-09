@@ -1,0 +1,62 @@
+[
+  {
+    "table": "FOLDER",
+    "data": {
+      "id": 0,
+      "name": ".!0x5f3759df_this_is_a_magic_number_used_for_telling_which_atom_is_the_root"
+    }
+  },
+  {
+    "table": "INFO",
+    "data": {
+      "name": "cascading_info",
+      "hook_table": "folder",
+      "hook_id": 1,
+      "extra_data": {
+        "fps": 24.0,
+        "init_workfile_version": "v0000",
+        "width": 2048,
+        "height": 858,
+        "profile": "launcher_a0001",
+        "pixel_aspect_ratio": 1.0,
+        "start_frame": 1001,
+        "dailies_codec": "prores 422"
+      }
+    }
+  },
+  {
+    "table": "AUTHORIZATION",
+    "data": {
+      "name": "artist",
+      "label": "artist"
+    }
+  },
+  {
+    "table": "AUTHORIZATION",
+    "data": {
+      "name": "manager",
+      "label": "manager"
+    }
+  },
+  {
+    "table": "AUTHORIZATION",
+    "data": {
+      "name": "producer",
+      "label": "producer"
+    }
+  },
+  {
+    "table": "AUTHORIZATION",
+    "data": {
+      "name": "sup",
+      "label": "sup"
+    }
+  },
+  {
+    "table": "AUTHORIZATION",
+    "data": {
+      "name": "admin",
+      "label": "admin"
+    }
+  }
+]

@@ -8,8 +8,8 @@ __doc__ = \
     方便数据库中的使用    
     '''
 
-import time
 import os
+import time
 
 TIME_EPOCH = time.mktime(time.strptime('2010-01-01 00:00:00',
                                        '%Y-%m-%d %H:%M:%S'))
@@ -21,8 +21,6 @@ uuidChars = ("a", "b", "c", "d", "e", "f",
              "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V",
              "W", "X", "Y", "Z")
 
-def load_config(config_name):
-    pass
 
 def short_uuid():
     import uuid
@@ -33,8 +31,8 @@ def short_uuid():
 
 
 def delete_tree(orm):
-    import net_log
-    net_log.get_logger().warn('delete data orm tree: {}'.format(orm))
+    # import net_log
+    # net_log.get_logger().warn('delete data orm tree: {}'.format(orm))
     orm.active = False
     for x in orm.walk():
         x.active = False
@@ -64,15 +62,15 @@ def get_root_folder():
     获得整个数据库的Root ORM，可以理解为根路径
     :return: FOLDER orm
     '''
-    import db
+    import dayu_database
     import table
-    import config.const
-    session = db.get_session()
+    import config
+    session = dayu_database.get_session()
     try:
         return session.query(table.FOLDER).filter(
-                table.FOLDER.name == config.const.DB_ROOT_FOLDER_NAME).one()
+                table.FOLDER.name == config.DAYU_DB_ROOT_FOLDER_NAME).one()
     except:
-        root = table.FOLDER(name=config.const.DB_ROOT_FOLDER_NAME)
+        root = table.FOLDER(name=config.DAYU_DB_ROOT_FOLDER_NAME)
         session.add(root)
         session.commit()
         return root
@@ -105,10 +103,10 @@ def get_db_config(db_config_name):
     :param db_config_name: 用户输入的config 名称。例如 db.movie
     :return: DB_CONFIG orm
     '''
-    import db
-    import table
-    session = db.get_session()
-    return session.query(table.DB_CONFIG).filter(table.DB_CONFIG.name == db_config_name).one()
+    import dayu_database
+    from table import DB_CONFIG
+    session = dayu_database.get_session()
+    return session.query(DB_CONFIG).filter(DB_CONFIG.name == db_config_name).one()
 
 
 def get_storage_config(storage_config_name):
@@ -117,10 +115,10 @@ def get_storage_config(storage_config_name):
     :param storage_config_name: 用户输入的config 名称。例如 storage.movie
     :return: STORAGE orm
     '''
-    import db
-    import table
-    session = db.get_session()
-    return session.query(table.STORAGE).filter(table.STORAGE.name == storage_config_name).one()
+    import dayu_database
+    from table import STORAGE
+    session = dayu_database.get_session()
+    return session.query(STORAGE).filter(STORAGE.name == storage_config_name).one()
 
 
 def get_class(orm_tablename):
@@ -226,15 +224,15 @@ def get_vfx_onset(orm):
     :param orm: FOLDER 或者FILE orm
     :return: generator
     '''
-    import db
+    import dayu_database
     import table
-    session = db.get_session()
+    session = dayu_database.get_session()
     for meta_file in session.query(table.FILE) \
             .filter(table.FILE.meaning == 'METADATA') \
             .filter(table.FILE.top == orm.top):
         found = False
         for vfx_match_name in meta_file.vfx_clue:
-            if vfx_match_name == 'ALL':
+            if vfx_match_name in ('ALL', '*'):
                 found = True
                 yield meta_file
                 break
@@ -248,7 +246,7 @@ def get_vfx_onset(orm):
             continue
 
         for vfx_match_name in meta_file.cam_clue:
-            if vfx_match_name == 'ALL':
+            if vfx_match_name in ('ALL', '*'):
                 found = True
                 yield meta_file
                 break
@@ -359,11 +357,10 @@ def get_name_pattern(project_name, meaning):
 
 
 def create_project(name, template_or_project=None, custom_storage=None):
-    import db
-    import db.born
+    import dayu_database.born
     import table
 
-    session = db.get_session()
+    session = dayu_database.get_session()
 
     project_orm = table.FOLDER(name=name, parent=get_root_folder())
     project_orm.db_config_name = 'db.{}'.format(name)
@@ -371,7 +368,7 @@ def create_project(name, template_or_project=None, custom_storage=None):
     project_orm.pipeline_config_name = 'pipeline.{}'.format(name)
 
     if isinstance(template_or_project, basestring):
-        template_manager = db.born.ConfigTemplateManager()
+        template_manager = dayu_database.born.ConfigTemplateManager()
 
         sub_template_name = '.'.join(template_or_project.split('.')[1:])
         print sub_template_name

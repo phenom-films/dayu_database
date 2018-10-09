@@ -7,14 +7,12 @@ import collections
 import re
 import sys
 
-import unipath
-
 from sqlalchemy import Column, BigInteger, Boolean, DateTime, String, Integer, func
-from sqlalchemy.orm import relationship, backref, deferred, validates
-from sqlalchemy.ext.declarative import declared_attr
 from sqlalchemy.dialects.postgresql import JSONB
+from sqlalchemy.ext.declarative import declared_attr
+from sqlalchemy.orm import relationship, backref, deferred, validates
+
 import deco
-import config
 
 
 class BasicMixin(object):
@@ -129,7 +127,7 @@ class TypeMixin(object):
             return value
 
         import dayu_database
-        from  util import get_class
+        from util import get_class
         session = dayu_database.get_session()
         try:
             type_group_table = get_class('type_group')
@@ -146,10 +144,10 @@ class TypeMixin(object):
             return value
 
         import dayu_database
-        import util
+        from util import get_class
         session = dayu_database.get_session()
         try:
-            type_table = dayu_database.get_class('type')
+            type_table = get_class('type')
             type_orm = session.query(type_table).filter(type_table.name == value).one()
         except:
             # session.rollback()
@@ -200,7 +198,7 @@ class DiskPathMixin(object):
         if getattr(self, '_cache_{}_disk_path'.format(disk_type), None) and refresh is False:
             return getattr(self, '_cache_{}_disk_path'.format(disk_type), None)
 
-        import disk_path
+        from dayu_path import DayuPath
         import util
 
         storage = util.get_storage_config(self.storage_config_name)
@@ -222,7 +220,7 @@ class DiskPathMixin(object):
 
             result += depth_config['to_disk'][x.meaning][disk_type].format(*param_list)
 
-        setattr(self, '_cache_{}_disk_path'.format(disk_type), disk_path.DiskPath(result))
+        setattr(self, '_cache_{}_disk_path'.format(disk_type), DayuPath(result))
         getattr(self, '_cache_{}_disk_path'.format(disk_type), None)._cache_orm = self
         return getattr(self, '_cache_{}_disk_path'.format(disk_type), None)
 
@@ -239,8 +237,8 @@ class SubLevelMixin(object):
         生成SubLevel 对象。用户可以使用这个对象进行路径操作，而不需要实际扫描硬盘。
         :return: SubLevel 对象
         '''
-        import sub_level
-        result = sub_level.SubLevel(self.disk_path(disk_type='publish'))
+        from sub_level import SubLevel
+        result = SubLevel(str(self.disk_path(disk_type='publish')))
         result._structure = dict(self.path_data.get('vfx_full_path', {}))
         return result
 
@@ -297,8 +295,8 @@ class SubLevelMixin(object):
         if not disk.exists():
             return False
 
-        black_list_begin = config.const.SCAN_IGNORE['start']
-        black_list_end = config.const.SCAN_IGNORE['end']
+        black_list_begin = ('.', '..', 'Thumb')
+        black_list_end = ('.csv', '.db', '.tmp')
 
         if recursive:
             import os
@@ -311,7 +309,8 @@ class SubLevelMixin(object):
                                   (not x.endswith(black_list_end))))
 
         else:
-            file_list = (x.replace(disk, '') for x in disk.listdir(filter=unipath.FILES)
+            import os
+            file_list = (x.replace(disk, '') for x in disk.listdir(filter=os.path.isfile)
                          if (not x.name.startswithwhite_list_begin) and
                          (not x.name.endswith(black_list_end)))
 
@@ -481,8 +480,7 @@ class DepthMixin(object):
 
         config_orm = None
         try:
-            config_orm = session.query(table.DB_CONFIG).filter(
-                    table.DB_CONFIG.name == self.db_config_name).one()
+            config_orm = session.query(table.DB_CONFIG).filter(table.DB_CONFIG.name == self.db_config_name).one()
         except Exception as e:
             raise e
 

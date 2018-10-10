@@ -19,9 +19,10 @@ __doc__ = \
     
     '''
 
-from sqlalchemy.ext.declarative import as_declarative, declared_attr
-from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.event import listens_for
+from sqlalchemy.ext.automap import automap_base
+from sqlalchemy.ext.declarative import as_declarative, declared_attr
+
 from util import snowflake, current_user_name
 
 

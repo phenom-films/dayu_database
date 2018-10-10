@@ -4,36 +4,66 @@
 __author__ = 'andyguo'
 
 import os
+import threading
 
 from sqlalchemy import create_engine
 from sqlalchemy.engine.url import URL
 from sqlalchemy.orm import sessionmaker
 
-from config import DAYU_DB_NAME
+import dayu_path_patch
+from config import (DAYU_DB_NAME, DAYU_STATIC_PATH, DayuDatabaseConfig, \
+                    DayuDatabaseStatusNotConnect, \
+                    DayuDatabaseStatusConnected)
 from deco import lazy
 
 _database_context = {}
 
 
 def get_session(db=None):
-    return DayuDatabase(db).session
+    db_instance = get_db(db)
+    if db_instance.status is DayuDatabaseStatusNotConnect:
+        from error import DayuDatabaseNotConnectError
+        raise DayuDatabaseNotConnectError('database not connect! please run .connect() before get_session()')
+    return db_instance.session
+
+
+def get_db(db=None):
+    current_threading_id = id(threading.current_thread())
+    db = db or os.environ.get(DAYU_DB_NAME, None) or 'default'
+    db_instance = _database_context.get(current_threading_id, {}).get(db, None)
+    if db_instance is None:
+        db_instance = DayuDatabase(db=db)
+    return db_instance
 
 
 class DayuDatabase(object):
+    config = None
+    status = DayuDatabaseStatusNotConnect
+
     def __new__(cls, db=None):
-        import threading
         db = db or os.environ.get(DAYU_DB_NAME, None) or 'default'
         current_threading_id = id(threading.current_thread())
-        uid = '{}_{}'.format(db, current_threading_id)
-        if uid in _database_context:
-            return _database_context[uid]
-        instance = super(DayuDatabase, cls).__new__(cls, name=db)
-        _database_context[uid] = instance
+        instance = _database_context.get(current_threading_id, {}).get(db, None)
+        if instance:
+            return instance
+
+        instance = super(DayuDatabase, cls).__new__(cls, db=db)
+        instance.status = DayuDatabaseStatusNotConnect
+        instance.config = DayuDatabaseConfig(parent=instance)
+        instance.config.update(DAYU_DB_NAME=db)
+        current_threading_db = _database_context.setdefault(current_threading_id, {})
+        current_threading_db[db] = instance
         return instance
 
     def __init__(self, db=None):
-        db = db or os.environ.get(DAYU_DB_NAME, None) or 'default'
-        db_url_file = os.sep.join((os.path.dirname(__file__), 'static', 'db_url', db + '.json'))
+        pass
+
+    def connect(self):
+        if self.status is DayuDatabaseStatusConnected:
+            return self
+
+        db = self.config.get(DAYU_DB_NAME, 'default')
+        db_url_file = os.sep.join((self.config.get(DAYU_STATIC_PATH, ''), 'db_url', db + '.json'))
 
         if not os.path.exists(db_url_file):
             from error import DayuDatabaseConfigNotExistError
@@ -44,9 +74,17 @@ class DayuDatabase(object):
             self.url = URL(**json.load(jf))
 
         self.engine = create_engine(self.url, echo=False, isolation_level='READ COMMITTED')
+        current_threading_db = _database_context.setdefault(id(threading.current_thread()), {})
+        current_threading_db[db] = self
+        self.status = DayuDatabaseStatusConnected
+        return self
 
     @lazy
     def session(self):
+        if self.status is DayuDatabaseStatusNotConnect:
+            from error import DayuDatabaseNotConnectError
+            raise DayuDatabaseNotConnectError('database not connect! please run .connect() before get_session()')
+
         import base
         import auto_naming
         import sqlalchemy.event
@@ -66,16 +104,3 @@ class DayuDatabase(object):
             # net_log.get_logger().info('db commit completed')
 
         return _session
-
-
-if __name__ == '__main__':
-    session = get_session()
-    from table import *
-
-    aa = session.query(FILE).get(1148725585083440309)
-    # print aa.test()
-    print aa.disk_path()
-    print type(aa.sub_level)
-    # print aa.path_data
-    for x in aa.sub_level.walk():
-        print x

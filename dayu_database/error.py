@@ -3,5 +3,14 @@
 
 __author__ = 'andyguo'
 
+
 class DayuDatabaseConfigNotExistError(ValueError):
+    pass
+
+
+class DayuDatabaseNotConnectError(ValueError):
+    pass
+
+
+class DayuDatabaseConfigChangedAfterConnect(ValueError):
     pass

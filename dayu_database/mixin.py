@@ -261,8 +261,8 @@ class SubLevelMixin(object):
         if not isinstance(self, file_table):
             return []
 
-        all_versions = self.parent.sub_files.filter(file_table.name <= self.name).all()
-        older_files = [x for x in all_versions if x.name <= self.name]
+        older_files = self.parent.sub_files.filter(file_table.name <= self.name).all()
+        # older_files = [x for x in all_versions if x.name <= self.name]
         temp_flatten_dict = dict()
         for v in older_files:
             current_version_path = v.disk_path('publish')

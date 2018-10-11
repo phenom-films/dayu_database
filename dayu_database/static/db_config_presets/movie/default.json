@@ -1,0 +1,1139 @@
+{
+  "0": {
+    "content": [
+      "ROOT"
+    ],
+    "member": [],
+    "to_disk": {
+      "ROOT": {
+        "publish": "/",
+        "work": "/",
+        "cache": "/"
+      }
+    },
+    "to_disk_param": {
+      "ROOT": {
+        "publish": null,
+        "work": null,
+        "cache": null
+      }
+    },
+    "from_disk": {
+      "ROOT": {
+        "publish": null,
+        "work": null,
+        "cache": null
+      }
+    },
+    "db_pattern": {
+      "/": "ROOT"
+    },
+    "is_end": {
+      "ROOT": false
+    },
+    "to_name": {
+      "ROOT": ""
+    },
+    "to_name_param": {
+      "ROOT": []
+    },
+    "parent": {
+      "ROOT": [
+        null
+      ]
+    }
+  },
+  "1": {
+    "content": [
+      "PROJECT"
+    ],
+    "member": [],
+    "to_disk": {
+      "PROJECT": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      }
+    },
+    "to_disk_param": {
+      "PROJECT": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      }
+    },
+    "from_disk": {
+      "PROJECT": {
+        "publish": 0,
+        "work": 0,
+        "cache": 0
+      }
+    },
+    "db_pattern": {
+      "/.*": "PROJECT"
+    },
+    "is_end": {
+      "PROJECT": false
+    },
+    "to_name": {
+      "PROJECT": "{0}"
+    },
+    "to_name_param": {
+      "PROJECT": [
+        1
+      ]
+    },
+    "parent": {
+      "PROJECT": [
+        "ROOT"
+      ]
+    }
+  },
+  "2": {
+    "content": [
+      "SEQUENCE_GROUP"
+    ],
+    "member": [
+      "asset",
+      "sequence",
+      "metadata",
+      "timeline"
+    ],
+    "to_disk": {
+      "SEQUENCE_GROUP": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      }
+    },
+    "to_disk_param": {
+      "SEQUENCE_GROUP": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      }
+    },
+    "from_disk": {
+      "SEQUENCE_GROUP": {
+        "publish": 1,
+        "work": 1,
+        "cache": 1
+      }
+    },
+    "db_pattern": {
+      "/.*/asset": "SEQUENCE_GROUP",
+      "/.*/sequence": "SEQUENCE_GROUP",
+      "/.*/metadata": "SEQUENCE_GROUP",
+      "/.*/timeline": "SEQUENCE_GROUP"
+    },
+    "is_end": {
+      "SEQUENCE_GROUP": false
+    },
+    "to_name": {
+      "SEQUENCE_GROUP": "{0}"
+    },
+    "to_name_param": {
+      "SEQUENCE_GROUP": [
+        2
+      ]
+    },
+    "parent": {
+      "SEQUENCE_GROUP": [
+        "PROJECT"
+      ]
+    }
+  },
+  "3": {
+    "content": [
+      "ASSET_SEQUENCE",
+      "SHOT_SEQUENCE",
+      "METADATA_SEQUENCE",
+      "TIMELINE_SEQUENCE"
+    ],
+    "member": [],
+    "to_disk": {
+      "ASSET_SEQUENCE": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      },
+      "SHOT_SEQUENCE": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      },
+      "METADATA_SEQUENCE": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      },
+      "TIMELINE_SEQUENCE": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      }
+    },
+    "to_disk_param": {
+      "ASSET_SEQUENCE": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      },
+      "SHOT_SEQUENCE": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      },
+      "METADATA_SEQUENCE": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      },
+      "TIMELINE_SEQUENCE": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      }
+    },
+    "from_disk": {
+      "ASSET_SEQUENCE": {
+        "publish": 2,
+        "work": 2,
+        "cache": 2
+      },
+      "SHOT_SEQUENCE": {
+        "publish": 2,
+        "work": 2,
+        "cache": 2
+      },
+      "METADATA_SEQUENCE": {
+        "publish": 2,
+        "work": 2,
+        "cache": 2
+      },
+      "TIMELINE_SEQUENCE": {
+        "publish": 2,
+        "work": 2,
+        "cache": 2
+      }
+    },
+    "db_pattern": {
+      "/.*/asset/.*": "ASSET_SEQUENCE",
+      "/.*/sequence/.*": "SHOT_SEQUENCE",
+      "/.*/metadata/.*": "METADATA_SEQUENCE",
+      "/.*/timeline/.*": "TIMELINE_SEQUENCE"
+    },
+    "is_end": {
+      "ASSET_SEQUENCE": false,
+      "SHOT_SEQUENCE": false,
+      "METADATA_SEQUENCE": false,
+      "TIMELINE_SEQUENCE": false
+    },
+    "to_name": {
+      "ASSET_SEQUENCE": "{0}",
+      "SHOT_SEQUENCE": "{0}",
+      "METADATA_SEQUENCE": "{0}",
+      "TIMELINE_SEQUENCE": "{0}"
+    },
+    "to_name_param": {
+      "ASSET_SEQUENCE": [
+        3
+      ],
+      "SHOT_SEQUENCE": [
+        3
+      ],
+      "METADATA_SEQUENCE": [
+        3
+      ],
+      "TIMELINE_SEQUENCE": [
+        3
+      ]
+    },
+    "parent": {
+      "ASSET_SEQUENCE": [
+        "SEQUENCE_GROUP"
+      ],
+      "SHOT_SEQUENCE": [
+        "SEQUENCE_GROUP"
+      ],
+      "METADATA_SEQUENCE": [
+        "SEQUENCE_GROUP"
+      ],
+      "TIMELINE_SEQUENCE": [
+        "SEQUENCE_GROUP"
+      ]
+    }
+  },
+  "4": {
+    "content": [
+      "ASSET",
+      "SHOT",
+      "METADATA",
+      "CLIP"
+    ],
+    "member": [],
+    "to_disk": {
+      "ASSET": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      },
+      "SHOT": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      },
+      "METADATA": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      },
+      "CLIP": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      }
+    },
+    "to_disk_param": {
+      "ASSET": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      },
+      "SHOT": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      },
+      "METADATA": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      },
+      "CLIP": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      }
+    },
+    "from_disk": {
+      "ASSET": {
+        "publish": 3,
+        "work": 3,
+        "cache": 3
+      },
+      "SHOT": {
+        "publish": 3,
+        "work": 3,
+        "cache": 3
+      },
+      "METADATA": {
+        "publish": 3,
+        "work": 3,
+        "cache": 3
+      },
+      "CLIP": {
+        "publish": 3,
+        "work": 3,
+        "cache": 3
+      }
+    },
+    "db_pattern": {
+      "/.*/asset/.*/.*": "ASSET",
+      "/.*/sequence/.*/.*": "SHOT",
+      "/.*/metadata/.*/.*": "METADATA",
+      "/.*/timeline/.*/.*": "CLIP"
+    },
+    "is_end": {
+      "ASSET": false,
+      "SHOT": false,
+      "METADATA": true,
+      "CLIP": true
+    },
+    "to_name": {
+      "ASSET": "{0}_{1}",
+      "SHOT": "{0}_{1}",
+      "METADATA": "{0}_{1}",
+      "CLIP": "{0}_{1}"
+    },
+    "to_name_param": {
+      "ASSET": [
+        3,
+        4
+      ],
+      "SHOT": [
+        3,
+        4
+      ],
+      "METADATA": [
+        3,
+        4
+      ],
+      "CLIP": [
+        3,
+        4
+      ]
+    },
+    "parent": {
+      "ASSET": [
+        "ASSET_SEQUENCE"
+      ],
+      "SHOT": [
+        "SHOT_SEQUENCE"
+      ],
+      "METADATA": [
+        "METADATA_SEQUENCE"
+      ],
+      "CLIP": [
+        "TIMELINE_SEQUENCE"
+      ]
+    }
+  },
+  "5": {
+    "content": [
+      "TYPE_GROUP"
+    ],
+    "member": [
+      "element",
+      "workfile",
+      "dailies",
+      "cache"
+    ],
+    "to_disk": {
+      "TYPE_GROUP": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      }
+    },
+    "to_disk_param": {
+      "TYPE_GROUP": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      }
+    },
+    "from_disk": {
+      "TYPE_GROUP": {
+        "publish": 4,
+        "work": 4,
+        "cache": 4
+      }
+    },
+    "db_pattern": {
+      "/.*/asset/.*/.*/element": "TYPE_GROUP",
+      "/.*/asset/.*/.*/workfile": "TYPE_GROUP",
+      "/.*/asset/.*/.*/dailies": "TYPE_GROUP",
+      "/.*/asset/.*/.*/cache": "TYPE_GROUP",
+      "/.*/sequence/.*/.*/element": "TYPE_GROUP",
+      "/.*/sequence/.*/.*/workfile": "TYPE_GROUP",
+      "/.*/sequence/.*/.*/dailies": "TYPE_GROUP",
+      "/.*/sequence/.*/.*/cache": "TYPE_GROUP"
+    },
+    "is_end": {
+      "TYPE_GROUP": false
+    },
+    "to_name": {
+      "TYPE_GROUP": "{0}"
+    },
+    "to_name_param": {
+      "TYPE_GROUP": [
+        5
+      ]
+    },
+    "parent": {
+      "TYPE_GROUP": [
+        "ASSET",
+        "SHOT"
+      ]
+    }
+  },
+  "6": {
+    "content": [
+      "TYPE"
+    ],
+    "member": [],
+    "to_disk": {
+      "TYPE": {
+        "publish": "/{0}",
+        "work": "/{0}/{1}",
+        "cache": "/{0}"
+      }
+    },
+    "to_disk_param": {
+      "TYPE": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "<current_user_name>",
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      }
+    },
+    "from_disk": {
+      "TYPE": {
+        "publish": 5,
+        "work": 6,
+        "cache": 5
+      }
+    },
+    "db_pattern": {
+      "/.*/asset/.*/.*/element/.*": "TYPE",
+      "/.*/asset/.*/.*/workfile/.*": "TYPE",
+      "/.*/asset/.*/.*/dailies/.*": "TYPE",
+      "/.*/asset/.*/.*/cache/.*": "TYPE",
+      "/.*/sequence/.*/.*/element/.*": "TYPE",
+      "/.*/sequence/.*/.*/workfile/.*": "TYPE",
+      "/.*/sequence/.*/.*/dailies/.*": "TYPE",
+      "/.*/sequence/.*/.*/cache/.*": "TYPE"
+    },
+    "is_end": {
+      "TYPE": false
+    },
+    "to_name": {
+      "TYPE": "{0}"
+    },
+    "to_name_param": {
+      "TYPE": [
+        6
+      ]
+    },
+    "parent": {
+      "TYPE": [
+        "TYPE_GROUP"
+      ]
+    }
+  },
+  "7": {
+    "content": [
+      "ASSET_ELEMENT_RESOURCE",
+      "ASSET_WORKFILE_RESOURCE",
+      "ASSET_DAILIES_RESOURCE",
+      "ASSET_CACHE_RESOURCE",
+      "SHOT_ELEMENT_RESOURCE",
+      "SHOT_WORKFILE_RESOURCE",
+      "SHOT_DAILIES_RESOURCE",
+      "SHOT_CACHE_RESOURCE"
+    ],
+    "member": [],
+    "to_disk": {
+      "ASSET_ELEMENT_RESOURCE": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      },
+      "ASSET_WORKFILE_RESOURCE": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      },
+      "ASSET_DAILIES_RESOURCE": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      },
+      "ASSET_CACHE_RESOURCE": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      },
+      "SHOT_ELEMENT_RESOURCE": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      },
+      "SHOT_WORKFILE_RESOURCE": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      },
+      "SHOT_DAILIES_RESOURCE": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      },
+      "SHOT_CACHE_RESOURCE": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      }
+    },
+    "to_disk_param": {
+      "ASSET_ELEMENT_RESOURCE": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      },
+      "ASSET_WORKFILE_RESOURCE": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      },
+      "ASSET_DAILIES_RESOURCE": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      },
+      "ASSET_CACHE_RESOURCE": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      },
+      "SHOT_ELEMENT_RESOURCE": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      },
+      "SHOT_WORKFILE_RESOURCE": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      },
+      "SHOT_DAILIES_RESOURCE": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      },
+      "SHOT_CACHE_RESOURCE": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      }
+    },
+    "from_disk": {
+      "ASSET_ELEMENT_RESOURCE": {
+        "publish": 6,
+        "work": 7,
+        "cache": 6
+      },
+      "ASSET_WORKFILE_RESOURCE": {
+        "publish": 6,
+        "work": 7,
+        "cache": 6
+      },
+      "ASSET_DAILIES_RESOURCE": {
+        "publish": 6,
+        "work": 7,
+        "cache": 6
+      },
+      "ASSET_CACHE_RESOURCE": {
+        "publish": 6,
+        "work": 7,
+        "cache": 6
+      },
+      "SHOT_ELEMENT_RESOURCE": {
+        "publish": 6,
+        "work": 7,
+        "cache": 6
+      },
+      "SHOT_WORKFILE_RESOURCE": {
+        "publish": 6,
+        "work": 7,
+        "cache": 6
+      },
+      "SHOT_DAILIES_RESOURCE": {
+        "publish": 6,
+        "work": 7,
+        "cache": 6
+      },
+      "SHOT_CACHE_RESOURCE": {
+        "publish": 6,
+        "work": 7,
+        "cache": 6
+      }
+    },
+    "db_pattern": {
+      "/.*/asset/.*/.*/element/.*/.*": "ASSET_ELEMENT_RESOURCE",
+      "/.*/asset/.*/.*/workfile/.*/.*": "ASSET_WORKFILE_RESOURCE",
+      "/.*/asset/.*/.*/dailies/.*/.*": "ASSET_DAILIES_RESOURCE",
+      "/.*/asset/.*/.*/cache/.*/.*": "ASSET_CACHE_RESOURCE",
+      "/.*/sequence/.*/.*/element/.*/.*": "SHOT_ELEMENT_RESOURCE",
+      "/.*/sequence/.*/.*/workfile/.*/.*": "SHOT_WORKFILE_RESOURCE",
+      "/.*/sequence/.*/.*/dailies/.*/.*": "SHOT_DAILIES_RESOURCE",
+      "/.*/sequence/.*/.*/cache/.*/.*": "SHOT_CACHE_RESOURCE"
+    },
+    "is_end": {
+      "ASSET_ELEMENT_RESOURCE": false,
+      "ASSET_WORKFILE_RESOURCE": false,
+      "ASSET_DAILIES_RESOURCE": false,
+      "ASSET_CACHE_RESOURCE": false,
+      "SHOT_ELEMENT_RESOURCE": false,
+      "SHOT_WORKFILE_RESOURCE": false,
+      "SHOT_DAILIES_RESOURCE": false,
+      "SHOT_CACHE_RESOURCE": false
+    },
+    "to_name": {
+      "ASSET_ELEMENT_RESOURCE": "{0}_{1}_{2}",
+      "ASSET_WORKFILE_RESOURCE": "{0}_{1}_{2}",
+      "ASSET_DAILIES_RESOURCE": "{0}_{1}_{2}",
+      "ASSET_CACHE_RESOURCE": "{0}_{1}_{2}",
+      "SHOT_ELEMENT_RESOURCE": "{0}_{1}_{2}",
+      "SHOT_WORKFILE_RESOURCE": "{0}_{1}_{2}",
+      "SHOT_DAILIES_RESOURCE": "{0}_{1}_{2}",
+      "SHOT_CACHE_RESOURCE": "{0}_{1}_{2}"
+    },
+    "to_name_param": {
+      "ASSET_ELEMENT_RESOURCE": [
+        4,
+        6,
+        7
+      ],
+      "ASSET_WORKFILE_RESOURCE": [
+        4,
+        6,
+        7
+      ],
+      "ASSET_DAILIES_RESOURCE": [
+        4,
+        6,
+        7
+      ],
+      "ASSET_CACHE_RESOURCE": [
+        4,
+        6,
+        7
+      ],
+      "SHOT_ELEMENT_RESOURCE": [
+        4,
+        6,
+        7
+      ],
+      "SHOT_WORKFILE_RESOURCE": [
+        4,
+        6,
+        7
+      ],
+      "SHOT_DAILIES_RESOURCE": [
+        4,
+        6,
+        7
+      ],
+      "SHOT_CACHE_RESOURCE": [
+        4,
+        6,
+        7
+      ]
+    },
+    "parent": {
+      "ASSET_ELEMENT_RESOURCE": [
+        "TYPE"
+      ],
+      "ASSET_WORKFILE_RESOURCE": [
+        "TYPE"
+      ],
+      "ASSET_DAILIES_RESOURCE": [
+        "TYPE"
+      ],
+      "ASSET_CACHE_RESOURCE": [
+        "TYPE"
+      ],
+      "SHOT_ELEMENT_RESOURCE": [
+        "TYPE"
+      ],
+      "SHOT_WORKFILE_RESOURCE": [
+        "TYPE"
+      ],
+      "SHOT_DAILIES_RESOURCE": [
+        "TYPE"
+      ],
+      "SHOT_CACHE_RESOURCE": [
+        "TYPE"
+      ]
+    }
+  },
+  "8": {
+    "content": [
+      "ASSET_ELEMENT_VERSION",
+      "ASSET_WORKFILE_VERSION",
+      "ASSET_DAILIES_VERSION",
+      "ASSET_CACHE_VERSION",
+      "SHOT_ELEMENT_VERSION",
+      "SHOT_WORKFILE_VERSION",
+      "SHOT_DAILIES_VERSION",
+      "SHOT_CACHE_VERSION"
+    ],
+    "member": [],
+    "to_disk": {
+      "ASSET_ELEMENT_VERSION": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      },
+      "ASSET_WORKFILE_VERSION": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      },
+      "ASSET_DAILIES_VERSION": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      },
+      "ASSET_CACHE_VERSION": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      },
+      "SHOT_ELEMENT_VERSION": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      },
+      "SHOT_WORKFILE_VERSION": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      },
+      "SHOT_DAILIES_VERSION": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      },
+      "SHOT_CACHE_VERSION": {
+        "publish": "/{0}",
+        "work": "/{0}",
+        "cache": "/{0}"
+      }
+    },
+    "to_disk_param": {
+      "ASSET_ELEMENT_VERSION": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      },
+      "ASSET_WORKFILE_VERSION": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      },
+      "ASSET_DAILIES_VERSION": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      },
+      "ASSET_CACHE_VERSION": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      },
+      "SHOT_ELEMENT_VERSION": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      },
+      "SHOT_WORKFILE_VERSION": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      },
+      "SHOT_DAILIES_VERSION": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      },
+      "SHOT_CACHE_VERSION": {
+        "publish": [
+          "name"
+        ],
+        "work": [
+          "name"
+        ],
+        "cache": [
+          "name"
+        ]
+      }
+    },
+    "from_disk": {
+      "ASSET_ELEMENT_VERSION": {
+        "publish": 7,
+        "work": 8,
+        "cache": 7
+      },
+      "ASSET_WORKFILE_VERSION": {
+        "publish": 7,
+        "work": 8,
+        "cache": 7
+      },
+      "ASSET_DAILIES_VERSION": {
+        "publish": 7,
+        "work": 8,
+        "cache": 7
+      },
+      "ASSET_CACHE_VERSION": {
+        "publish": 7,
+        "work": 8,
+        "cache": 7
+      },
+      "SHOT_ELEMENT_VERSION": {
+        "publish": 7,
+        "work": 8,
+        "cache": 7
+      },
+      "SHOT_WORKFILE_VERSION": {
+        "publish": 7,
+        "work": 8,
+        "cache": 7
+      },
+      "SHOT_DAILIES_VERSION": {
+        "publish": 7,
+        "work": 8,
+        "cache": 7
+      },
+      "SHOT_CACHE_VERSION": {
+        "publish": 7,
+        "work": 8,
+        "cache": 7
+      }
+    },
+    "db_pattern": {
+      "/.*/asset/.*/.*/element/.*/.*/.*": "ASSET_ELEMENT_VERSION",
+      "/.*/asset/.*/.*/workfile/.*/.*/.*": "ASSET_WORKFILE_VERSION",
+      "/.*/asset/.*/.*/dailies/.*/.*/.*": "ASSET_DAILIES_VERSION",
+      "/.*/asset/.*/.*/cache/.*/.*/.*": "ASSET_CACHE_VERSION",
+      "/.*/sequence/.*/.*/element/.*/.*/.*": "SHOT_ELEMENT_VERSION",
+      "/.*/sequence/.*/.*/workfile/.*/.*/.*": "SHOT_WORKFILE_VERSION",
+      "/.*/sequence/.*/.*/dailies/.*/.*/.*": "SHOT_DAILIES_VERSION",
+      "/.*/sequence/.*/.*/cache/.*/.*/.*": "SHOT_CACHE_VERSION"
+    },
+    "is_end": {
+      "ASSET_ELEMENT_VERSION": true,
+      "ASSET_WORKFILE_VERSION": true,
+      "ASSET_DAILIES_VERSION": true,
+      "ASSET_CACHE_VERSION": true,
+      "SHOT_ELEMENT_VERSION": true,
+      "SHOT_WORKFILE_VERSION": true,
+      "SHOT_DAILIES_VERSION": true,
+      "SHOT_CACHE_VERSION": true
+    },
+    "to_name": {
+      "ASSET_ELEMENT_VERSION": "{0}_{1}",
+      "ASSET_WORKFILE_VERSION": "{0}_{1}",
+      "ASSET_DAILIES_VERSION": "{0}_{1}",
+      "ASSET_CACHE_VERSION": "{0}_{1}",
+      "SHOT_ELEMENT_VERSION": "{0}_{1}",
+      "SHOT_WORKFILE_VERSION": "{0}_{1}",
+      "SHOT_DAILIES_VERSION": "{0}_{1}",
+      "SHOT_CACHE_VERSION": "{0}_{1}"
+    },
+    "to_name_param": {
+      "ASSET_ELEMENT_VERSION": [
+        7,
+        8
+      ],
+      "ASSET_WORKFILE_VERSION": [
+        7,
+        8
+      ],
+      "ASSET_DAILIES_VERSION": [
+        7,
+        8
+      ],
+      "ASSET_CACHE_VERSION": [
+        7,
+        8
+      ],
+      "SHOT_ELEMENT_VERSION": [
+        7,
+        8
+      ],
+      "SHOT_WORKFILE_VERSION": [
+        7,
+        8
+      ],
+      "SHOT_DAILIES_VERSION": [
+        7,
+        8
+      ],
+      "SHOT_CACHE_VERSION": [
+        7,
+        8
+      ]
+    },
+    "parent": {
+      "ASSET_ELEMENT_VERSION": [
+        "ASSET_ELEMENT_RESOURCE"
+      ],
+      "ASSET_WORKFILE_VERSION": [
+        "ASSET_WORKFILE_RESOURCE"
+      ],
+      "ASSET_DAILIES_VERSION": [
+        "ASSET_DAILIES_RESOURCE"
+      ],
+      "ASSET_CACHE_VERSION": [
+        "ASSET_CACHE_RESOURCE"
+      ],
+      "SHOT_ELEMENT_VERSION": [
+        "SHOT_ELEMENT_RESOURCE"
+      ],
+      "SHOT_WORKFILE_VERSION": [
+        "SHOT_WORKFILE_RESOURCE"
+      ],
+      "SHOT_DAILIES_VERSION": [
+        "SHOT_DAILIES_RESOURCE"
+      ],
+      "SHOT_CACHE_VERSION": [
+        "SHOT_CACHE_RESOURCE"
+      ]
+    }
+  }
+}

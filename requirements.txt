@@ -1,2 +1,3 @@
 SQLAlchemy>=1.2
 message>=0.2.1
+dayu_path>=0.3

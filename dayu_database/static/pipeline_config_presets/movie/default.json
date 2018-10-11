@@ -1,0 +1,682 @@
+{
+  "pipeline": {
+    "maya": {
+      "mm": {
+        "cache": {},
+        "element": {
+          "mm": {
+            "create": {
+              "api": "default_element_mm_a0001",
+              "checked": true
+            },
+            "export": {
+              "api": "default_element_mm_a0001",
+              "checked": true
+            }
+          },
+          "cam": {
+            "create": {
+              "api": "default_element_cam_a0001",
+              "checked": true
+            },
+            "export": {
+              "api": "default_element_cam_a0001",
+              "checked": true
+            }
+          },
+          "mdl": {
+            "create": {
+              "api": "mm_element_mdl_a0001",
+              "checked": true
+            }
+          },
+          "plt": {
+            "create": {
+              "api": "default_element_plt_a0001",
+              "checked": true
+            }
+          },
+          "rig": {
+            "create": {}
+          },
+          "srf": {
+            "create": {}
+          },
+          "tmw": {
+            "create": {
+              "api": "default_element_tmw_a0001",
+              "checked": true
+            }
+          }
+        },
+        "workfile": {
+          "mm": {
+            "create": {}
+          }
+        }
+      },
+      "mp": {
+        "cache": {},
+        "element": {
+          "mp": {
+            "export": {}
+          },
+          "mdl": {
+            "create": {
+              "api": "default_element_mdl_a0001",
+              "checked": true
+            }
+          }
+        },
+        "workfile": {
+          "mp": {
+            "create": {}
+          }
+        }
+      },
+      "ani": {
+        "cache": {},
+        "element": {
+          "mm": {
+            "create": {
+              "api": "default_element_mm_a0001",
+              "checked": true
+            }
+          },
+          "ani": {
+            "create": {
+              "api": "default_element_ani_a0001",
+              "checked": true
+            },
+            "export": {
+              "api": "default_element_ani_a0001",
+              "checked": true
+            }
+          },
+          "cam": {
+            "create": {
+              "api": "default_element_cam_a0001",
+              "checked": true
+            },
+            "export": {
+              "api": "default_element_cam_a0001",
+              "checked": true
+            }
+          },
+          "mdl": {
+            "create": {
+              "api": "ani_element_mdl_a0001",
+              "checked": true
+            }
+          },
+          "plt": {
+            "create": {
+              "api": "default_element_plt_a0001",
+              "checked": true
+            }
+          },
+          "rig": {
+            "create": {}
+          },
+          "srf": {
+            "create": {}
+          },
+          "tmw": {
+            "create": {
+              "api": "default_element_tmw_a0001",
+              "checked": true
+            },
+            "export": {
+              "api": "default_element_tmw_a0001",
+              "checked": true
+            }
+          }
+        },
+        "workfile": {
+          "ani": {
+            "create": {}
+          }
+        }
+      },
+      "efx": {
+        "cache": {},
+        "element": {
+          "mdl": {
+            "create": {
+              "api": "efx_element_mdl_a0001",
+              "checked": true
+            }
+          },
+          "ren": {
+            "export": {
+              "api": "default_element_ren_a0001",
+              "checked": true
+            }
+          }
+        },
+        "workfile": {
+          "efx": {
+            "create": {}
+          }
+        }
+      },
+      "lgt": {
+        "cache": {},
+        "element": {
+          "mm": {
+            "create": {
+              "api": "default_element_mm_a0001",
+              "checked": true
+            }
+          },
+          "ani": {
+            "create": {
+              "api": "default_element_ani_a0001",
+              "checked": true
+            }
+          },
+          "efx": {
+            "create": {
+              "api": "default_element_efx_a0001",
+              "checked": true
+            }
+          },
+          "lgt": {
+            "create": {
+              "api": "default_element_lgt_a0001",
+              "checked": true
+            },
+            "export": {
+              "api": "default_element_lgt_a0001",
+              "checked": true
+            }
+          },
+          "mdl": {
+            "create": {
+              "api": "lgt_element_mdl_a0001",
+              "checked": true
+            }
+          },
+          "ren": {
+            "export": {
+              "api": "default_element_ren_a0001",
+              "checked": true
+            }
+          },
+          "rig": {
+            "create": {}
+          },
+          "srf": {
+            "create": {}
+          },
+          "cloth": {
+            "create": {}
+          }
+        },
+        "workfile": {
+          "lgt": {
+            "create": {}
+          }
+        }
+      },
+      "mdl": {
+        "cache": {},
+        "element": {
+          "mdl": {
+            "create": {
+              "api": "mdl_element_mdl_a0001",
+              "checked": true
+            },
+            "export": {
+              "api": "mdl_element_mdl_a0001",
+              "checked": true
+            }
+          }
+        },
+        "workfile": {
+          "mdl": {
+            "create": {}
+          }
+        }
+      },
+      "rig": {
+        "cache": {},
+        "element": {
+          "mdl": {
+            "create": {
+              "api": "rig_element_mdl_a0001",
+              "checked": true
+            }
+          },
+          "rig": {
+            "export": {
+              "api": "rig_element_rig_a0001",
+              "checked": true
+            }
+          },
+          "srf": {
+            "create": {}
+          }
+        },
+        "workfile": {
+          "rig": {
+            "create": {}
+          }
+        }
+      },
+      "shd": {
+        "cache": {},
+        "element": {
+          "mdl": {
+            "create": {
+              "api": "shd_element_mdl_a0001",
+              "checked": true
+            }
+          },
+          "srf": {
+            "export": {
+              "api": "default_element_srf_a0001",
+              "checked": true
+            }
+          }
+        },
+        "workfile": {
+          "shd": {
+            "create": {}
+          }
+        }
+      },
+      "srf": {
+        "cache": {},
+        "element": {
+          "mdl": {
+            "create": {
+              "api": "srf_element_mdl_a0001",
+              "checked": true
+            }
+          },
+          "srf": {
+            "export": {
+              "api": "default_element_srf_a0001",
+              "checked": true
+            }
+          }
+        },
+        "workfile": {
+          "srf": {
+            "create": {}
+          }
+        }
+      }
+    },
+    "nuke": {
+      "mm": {
+        "cache": {},
+        "element": {
+          "plt": {
+            "create": {
+              "api": "default_element_plt_a0001"
+            }
+          }
+        },
+        "workfile": {
+          "mm": {
+            "create": {}
+          }
+        }
+      },
+      "key": {
+        "cache": {},
+        "element": {
+          "key": {
+            "create": {
+              "api": "default_element_key_a0001"
+            },
+            "export": {
+              "api": "default_element_key_a0001"
+            }
+          },
+          "plt": {
+            "create": {
+              "api": "default_element_plt_a0001"
+            }
+          }
+        },
+        "workfile": {
+          "key": {
+            "create": {}
+          }
+        }
+      },
+      "tmw": {
+        "cache": {},
+        "element": {
+          "plt": {
+            "create": {
+              "api": "default_element_plt_a0001"
+            }
+          },
+          "tmw": {
+            "create": {
+              "api": "default_element_tmw_a0001"
+            },
+            "export": {
+              "api": "default_element_tmw_a0001"
+            }
+          }
+        },
+        "workfile": {
+          "tmw": {
+            "create": {}
+          }
+        }
+      },
+      "comp": {
+        "cache": {},
+        "element": {
+          "cam": {
+            "create": {
+              "api": "default_element_cam_a0001",
+              "checked": true
+            }
+          },
+          "mdl": {
+            "create": {
+              "api": "default_element_mdl_a0001",
+              "checked": true
+            }
+          },
+          "plt": {
+            "create": {
+              "api": "default_element_plt_a0001",
+              "checked": true
+            }
+          },
+          "ren": {
+            "create": {
+              "api": "default_element_ren_a0001",
+              "checked": true
+            }
+          },
+          "tmw": {
+            "create": {
+              "api": "default_element_tmw_a0001",
+              "checked": true
+            }
+          },
+          "comp": {
+            "create": {
+              "api": "default_element_comp_a0001",
+              "checked": true
+            },
+            "export": {
+              "api": "default_element_comp_a0001",
+              "checked": true
+            }
+          },
+          "pcomp": {
+            "create": {
+              "api": "default_element_pcomp_a0001",
+              "checked": true
+            },
+            "export": {
+              "api": "default_element_pcomp_a0001",
+              "checked": true
+            }
+          }
+        },
+        "workfile": {
+          "comp": {
+            "create": {}
+          }
+        }
+      },
+      "roto": {
+        "cache": {},
+        "element": {
+          "plt": {
+            "create": {
+              "api": "default_element_plt_a0001"
+            }
+          },
+          "ren": {
+            "create": {
+              "api": "default_element_ren_a0001"
+            }
+          },
+          "tmw": {
+            "create": {
+              "api": "default_element_tmw_a0001"
+            },
+            "export": {
+              "api": "default_element_tmw_a0001"
+            }
+          },
+          "roto": {
+            "create": {
+              "api": "default_element_roto_a0001"
+            },
+            "export": {
+              "api": "default_element_roto_a0001"
+            }
+          },
+          "paint": {
+            "export": {
+              "api": "default_element_paint_a0001",
+              "checked": true
+            }
+          }
+        },
+        "workfile": {
+          "roto": {
+            "create": {}
+          }
+        }
+      },
+      "paint": {
+        "cache": {},
+        "element": {
+          "plt": {
+            "create": {
+              "api": "default_element_plt_a0001"
+            }
+          },
+          "paint": {
+            "create": {
+              "api": "default_element_paint_a0001"
+            },
+            "export": {
+              "api": "default_element_paint_a0001"
+            }
+          }
+        },
+        "workfile": {
+          "paint": {
+            "create": {}
+          }
+        }
+      },
+      "pcomp": {
+        "cache": {},
+        "element": {
+          "ren": {
+            "create": {
+              "api": "default_element_ren_a0001",
+              "checked": true
+            },
+            "export": {
+              "api": "default_element_ren_a0001",
+              "checked": true
+            }
+          },
+          "tmw": {
+            "export": {
+              "api": "default_element_tmw_a0001",
+              "checked": true
+            }
+          },
+          "pcomp": {
+            "create": {
+              "api": "default_element_pcomp_a0001",
+              "checked": true
+            },
+            "export": {
+              "api": "default_element_pcomp_a0001",
+              "checked": true
+            }
+          }
+        },
+        "workfile": {
+          "pcomp": {
+            "create": {}
+          }
+        }
+      },
+      "default": {
+        "cache": {},
+        "element": {
+          "mp": {
+            "create": {
+              "api": "default_element_mp_a0001",
+              "checked": true
+            }
+          },
+          "ani": {
+            "create": {
+              "api": "default_element_ani_a0001",
+              "checked": true
+            }
+          },
+          "cam": {
+            "create": {
+              "api": "default_element_cam_a0001",
+              "checked": true
+            }
+          },
+          "mdl": {
+            "create": {
+              "api": "default_element_mdl_a0001",
+              "checked": true
+            }
+          },
+          "plt": {
+            "create": {
+              "api": "default_element_plt_a0001",
+              "checked": true
+            }
+          },
+          "ren": {
+            "create": {
+              "api": "default_element_ren_a0001",
+              "checked": true
+            }
+          },
+          "tmw": {
+            "create": {
+              "api": "default_element_tmw_a0001",
+              "checked": true
+            }
+          },
+          "comp": {
+            "create": {
+              "api": "default_element_comp_a0001",
+              "checked": true
+            }
+          },
+          "pcomp": {
+            "create": {
+              "api": "default_element_pcomp_a0001",
+              "checked": true
+            }
+          }
+        },
+        "workfile": {
+          "default": {
+            "create": {}
+          }
+        }
+      }
+    },
+    "finder": {
+      "mp": {
+        "cache": {},
+        "element": {
+          "mp": {
+            "export": {
+              "api": "default_element_mp_a0001",
+              "checked": true
+            }
+          }
+        },
+        "workfile": {
+          "mp": {
+            "create": {}
+          }
+        }
+      },
+      "efx": {
+        "cache": {},
+        "element": {
+          "ren": {
+            "export": {
+              "api": "default_element_ren_a0001",
+              "checked": true
+            }
+          }
+        },
+        "workfile": {
+          "efx": {
+            "create": {}
+          }
+        }
+      },
+      "lgt": {
+        "cache": {},
+        "element": {
+          "ren": {
+            "export": {
+              "api": "default_element_ren_a0001",
+              "checked": true
+            }
+          }
+        },
+        "workfile": {
+          "lgt": {
+            "create": {}
+          }
+        }
+      }
+    },
+    "houdini": {
+      "efx": {
+        "cache": {
+          "bgeo": {
+            "export": {
+              "api": "default_cache_bgeo_a0001",
+              "checked": true
+            }
+          }
+        },
+        "element": {
+          "efx": {
+            "export": {
+              "api": "default_element_efx_a0001",
+              "checked": true
+            }
+          },
+          "ren": {
+            "export": {
+              "api": "default_element_ren_a0001",
+              "checked": true
+            }
+          }
+        },
+        "workfile": {
+          "efx": {
+            "create": {}
+          }
+        }
+      }
+    }
+  }
+}

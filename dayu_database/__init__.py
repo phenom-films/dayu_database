@@ -11,7 +11,7 @@ from sqlalchemy.engine.url import URL
 from sqlalchemy.orm import sessionmaker
 
 import dayu_path_patch
-from config import (DAYU_DB_NAME, DAYU_STATIC_PATH, DayuDatabaseConfig, \
+from config import (DAYU_DB_NAME, DAYU_CONFIG_STATIC_PATH, DayuDatabaseConfig, \
                     DayuDatabaseStatusNotConnect, \
                     DayuDatabaseStatusConnected)
 from deco import lazy
@@ -63,7 +63,7 @@ class DayuDatabase(object):
             return self
 
         db = self.config.get(DAYU_DB_NAME, 'default')
-        db_url_file = os.sep.join((self.config.get(DAYU_STATIC_PATH, ''), 'db_url', db + '.json'))
+        db_url_file = os.sep.join((self.config.get(DAYU_CONFIG_STATIC_PATH, ''), 'db_url', db + '.json'))
 
         if not os.path.exists(db_url_file):
             from error import DayuDatabaseConfigNotExistError

@@ -1,0 +1,17 @@
+{
+  "publish": {
+    "win32": "y:/tech/publish",
+    "darwin": "/Volumes/filedata/tech/publish",
+    "linux2": "/mnt/publish"
+  },
+  "work": {
+    "win32": "y:/tech/work",
+    "darwin": "/Volumes/filedata/tech/work",
+    "linux2": "/mnt/publish"
+  },
+  "cache": {
+    "win32": "y:/tech/cache",
+    "darwin": "/Volumes/filedata/tech/cache",
+    "linux2": "/mnt/publish"
+  }
+}

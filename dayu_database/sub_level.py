@@ -104,7 +104,7 @@ import re
 from dayu_path import DayuPath
 from dayu_path.data_structure import SequentialFiles
 
-from config import DECISION_TREE, DAYU_APP_NAME
+from config import DECISION_TREE, DAYU_APP_NAME, DAYU_CONFIG_STATIC_PATH
 
 presets_root = 'sub_level_config_presets'
 
@@ -181,11 +181,12 @@ class SubLevelConfigManager(object):
         :return:
         '''
 
+        import os
         if software is None:
-            import os
             software = os.getenv(DAYU_APP_NAME, '')
 
-        root_path = DayuPath(__file__).parent.child('static', presets_root, software)
+        root_path = DayuPath(os.environ.get(DAYU_CONFIG_STATIC_PATH,
+                                            DayuPath(__file__).parent.child('static', presets_root, software)))
         for x in root_path.walk(filter=os.path.isfile):
             if x.endswith('.json'):
                 with open(x, 'r') as jf:
@@ -202,7 +203,10 @@ class SubLevelConfigManager(object):
         但是推荐使用文件夹层级进行管理。
         :return:
         '''
-        root_path = DayuPath(__file__).parent.child('static', presets_root)
+        import os
+
+        root_path = DayuPath(os.environ.get(DAYU_CONFIG_STATIC_PATH,
+                                            DayuPath(__file__).parent.child('static', presets_root)))
         for x in itertools.product(*DECISION_TREE):
             temp = root_path.child(*x)
             temp.mkdir(parents=True)

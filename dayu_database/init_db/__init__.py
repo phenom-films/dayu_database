@@ -10,8 +10,8 @@ def init_db(db=None, preset=None):
     import dayu_database
     import base
     import table
-    db_obj = dayu_database.DayuDatabase(db=db)
-    print db_obj.engine
+    db_obj = dayu_database.get_db(db=db)
+    db_obj.connect()
     base.BASE.metadata.create_all(db_obj.engine)
 
     preset = preset if preset else 'default'

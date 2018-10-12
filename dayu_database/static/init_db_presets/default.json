@@ -58,5 +58,33 @@
       "name": "admin",
       "label": "admin"
     }
+  },
+  {
+    "table": "TYPE_GROUP",
+    "data": {
+      "name": "element",
+      "label": "element"
+    }
+  },
+  {
+    "table": "TYPE_GROUP",
+    "data": {
+      "name": "workfile",
+      "label": "workfile"
+    }
+  },
+  {
+    "table": "TYPE_GROUP",
+    "data": {
+      "name": "cache",
+      "label": "cache"
+    }
+  },
+  {
+    "table": "TYPE_GROUP",
+    "data": {
+      "name": "reference",
+      "label": "reference"
+    }
   }
 ]

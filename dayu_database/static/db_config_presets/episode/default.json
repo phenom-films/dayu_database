@@ -103,7 +103,8 @@
       "asset",
       "sequence",
       "metadata",
-      "timeline"
+      "timeline",
+      "reference"
     ],
     "to_disk": {
       "SEQUENCE_GROUP": {
@@ -136,7 +137,8 @@
       "/.*/asset": "SEQUENCE_GROUP",
       "/.*/sequence": "SEQUENCE_GROUP",
       "/.*/metadata": "SEQUENCE_GROUP",
-      "/.*/timeline": "SEQUENCE_GROUP"
+      "/.*/timeline": "SEQUENCE_GROUP",
+      "/.*/reference": "SEQUENCE_GROUP"
     },
     "is_end": {
       "SEQUENCE_GROUP": false
@@ -457,7 +459,8 @@
       "element",
       "workfile",
       "dailies",
-      "cache"
+      "cache",
+      "reference"
     ],
     "to_disk": {
       "TYPE_GROUP": {
@@ -512,6 +515,7 @@
       "/.*/asset/.*/.*/workfile": "TYPE_GROUP",
       "/.*/asset/.*/.*/dailies": "TYPE_GROUP",
       "/.*/asset/.*/.*/cache": "TYPE_GROUP",
+      "/.*/asset/.*/.*/reference": "TYPE_GROUP",
       "/.*/sequence/.*/.*/.*": "SHOT"
     },
     "is_end": {
@@ -552,7 +556,8 @@
       "element",
       "workfile",
       "dailies",
-      "cache"
+      "cache",
+      "reference"
     ],
     "to_disk": {
       "TYPE_GROUP": {
@@ -611,7 +616,8 @@
       "/.*/sequence/.*/.*/.*/element": "TYPE_GROUP",
       "/.*/sequence/.*/.*/.*/workfile": "TYPE_GROUP",
       "/.*/sequence/.*/.*/.*/dailies": "TYPE_GROUP",
-      "/.*/sequence/.*/.*/.*/cache": "TYPE_GROUP"
+      "/.*/sequence/.*/.*/.*/cache": "TYPE_GROUP",
+      "/.*/sequence/.*/.*/.*/reference": "TYPE_GROUP"
     },
     "is_end": {
       "TYPE_GROUP": false,

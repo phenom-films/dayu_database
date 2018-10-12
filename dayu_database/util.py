@@ -210,9 +210,17 @@ def get_next_depth(db_config_name, current_depth):
             current_db_path_pattern = next(
                     (k for k, v in db_config.config.get(str(current_depth.depth))['db_pattern'].items()
                      if re.match(k, current_depth.db_path())), None)
-            return {v: (table.FILE if depth_config['is_end'][v] else table.FOLDER)
-                    for k, v in depth_config['db_pattern'].items()
-                    if '/'.join(k.split('/')[:-1]) == current_db_path_pattern}
+            result = {}
+            for k, v in depth_config['db_pattern'].items():
+                db_path_component = k.split('/')
+                if '/'.join(db_path_component[:-1]) == current_db_path_pattern:
+                    values = {x.split('/')[-1] for x, y in depth_config['db_pattern'].items()
+                              if '/'.join(x.split('/')[:-1]) == current_db_path_pattern}
+                    if '.*' in values:
+                        values = []
+                    result[v] = [(table.FILE if depth_config['is_end'][v] else table.FOLDER),
+                                 list(values)]
+                    return result
 
     return {}
 

@@ -33,8 +33,10 @@ __doc__ = \
 import json
 
 from dayu_path import DayuPath
+from config import DAYU_CONFIG_STATIC_PATH
 
 import util
+import os
 
 
 class ConfigManagerBase(object):
@@ -54,7 +56,9 @@ class ConfigManagerBase(object):
         读取当前硬盘上所有DB_CONFIG 对应的json
         :return: None
         '''
-        config_path = DayuPath(__file__).parent.child('static', cls.prefix + '_config_presets')
+        config_path = DayuPath(os.environ.get(DAYU_CONFIG_STATIC_PATH,
+                                              DayuPath(__file__).parent.child('static',
+                                                                              cls.prefix + '_config_presets')))
 
         assert config_path.exists() is True
 

@@ -14,3 +14,11 @@ class DayuDatabaseNotConnectError(ValueError):
 
 class DayuDatabaseConfigChangedAfterConnect(ValueError):
     pass
+
+
+class DayuStatusNotSetError(ValueError):
+    pass
+
+
+class DayuStatusInvalidateError(ValueError):
+    pass

@@ -37,10 +37,12 @@
             }
           },
           "rig": {
-            "create": {}
-          },
-          "srf": {
-            "create": {}
+            "create": {
+              "api": "default_element_rig_a0001"
+            },
+            "export": {
+              "api": "rig_element_rig_a0001"
+            }
           },
           "tmw": {
             "create": {
@@ -116,19 +118,18 @@
             }
           },
           "rig": {
-            "create": {}
+            "create": {
+              "api": "default_element_rig_a0001"
+            }
           },
           "srf": {
-            "create": {}
+            "create": {
+              "api": "default_element_srf_a0001"
+            }
           },
           "tmw": {
             "create": {
-              "api": "default_element_tmw_a0001",
-              "checked": true
-            },
-            "export": {
-              "api": "default_element_tmw_a0001",
-              "checked": true
+              "api": "default_element_tmw_a0001"
             }
           }
         },
@@ -141,16 +142,55 @@
       "efx": {
         "cache": {},
         "element": {
+          "mm": {
+            "create": {
+              "api": "default_element_mm_a0001"
+            }
+          },
+          "ani": {
+            "create": {
+              "api": "default_element_ani_a0001"
+            }
+          },
+          "cam": {
+            "create": {
+              "api": "default_element_cam_a0001"
+            }
+          },
+          "efx": {
+            "create": {
+              "api": "default_element_efx_a0001"
+            }
+          },
+          "lgt": {
+            "create": {
+              "api": "default_element_lgt_a0001"
+            }
+          },
           "mdl": {
             "create": {
-              "api": "efx_element_mdl_a0001",
-              "checked": true
+              "api": "efx_element_mdl_a0001"
+            }
+          },
+          "plt": {
+            "create": {
+              "api": "default_element_plt_a0001"
             }
           },
           "ren": {
             "export": {
               "api": "default_element_ren_a0001",
               "checked": true
+            }
+          },
+          "rig": {
+            "create": {
+              "api": "default_element_rig_a0001"
+            }
+          },
+          "srf": {
+            "create": {
+              "api": "default_element_srf_a0001"
             }
           }
         },
@@ -177,8 +217,7 @@
           },
           "efx": {
             "create": {
-              "api": "default_element_efx_a0001",
-              "checked": true
+              "api": "default_element_efx_a0001"
             }
           },
           "lgt": {
@@ -193,8 +232,7 @@
           },
           "mdl": {
             "create": {
-              "api": "lgt_element_mdl_a0001",
-              "checked": true
+              "api": "lgt_element_mdl_a0001"
             }
           },
           "ren": {
@@ -204,10 +242,19 @@
             }
           },
           "rig": {
-            "create": {}
+            "create": {
+              "api": "default_element_rig_a0001"
+            }
           },
           "srf": {
-            "create": {}
+            "create": {
+              "api": "default_element_srf_a0001"
+            }
+          },
+          "tmw": {
+            "create": {
+              "api": "default_element_tmw_a0001"
+            }
           },
           "cloth": {
             "create": {}
@@ -230,6 +277,11 @@
             "export": {
               "api": "mdl_element_mdl_a0001",
               "checked": true
+            }
+          },
+          "srf": {
+            "create": {
+              "api": "default_element_srf_a0001"
             }
           }
         },
@@ -255,7 +307,9 @@
             }
           },
           "srf": {
-            "create": {}
+            "create": {
+              "api": "default_element_srf_a0001"
+            }
           }
         },
         "workfile": {
@@ -291,19 +345,88 @@
         "element": {
           "mdl": {
             "create": {
-              "api": "srf_element_mdl_a0001",
-              "checked": true
+              "api": "srf_element_mdl_a0001"
             }
           },
           "srf": {
+            "create": {
+              "api": "default_element_srf_a0001"
+            },
             "export": {
-              "api": "default_element_srf_a0001",
-              "checked": true
+              "api": "default_element_srf_a0001"
             }
           }
         },
         "workfile": {
           "srf": {
+            "create": {}
+          }
+        }
+      },
+      "default": {
+        "cache": {},
+        "element": {
+          "mm": {
+            "create": {
+              "api": "default_element_mm_a0001"
+            }
+          },
+          "mp": {},
+          "ani": {
+            "create": {
+              "api": "default_element_ani_a0001"
+            }
+          },
+          "cam": {
+            "create": {
+              "api": "default_element_cam_a0001"
+            }
+          },
+          "cpt": {},
+          "efx": {
+            "create": {
+              "api": "default_element_efx_a0001"
+            }
+          },
+          "key": {},
+          "lgt": {
+            "create": {
+              "api": "default_element_lgt_a0001"
+            }
+          },
+          "mdl": {
+            "create": {
+              "api": "default_element_mdl_a0001"
+            }
+          },
+          "plt": {
+            "create": {
+              "api": "default_element_plt_a0001"
+            }
+          },
+          "rig": {
+            "create": {
+              "api": "default_element_rig_a0001"
+            }
+          },
+          "srf": {
+            "create": {
+              "api": "default_element_srf_a0001"
+            }
+          },
+          "tex": {},
+          "tmw": {
+            "create": {
+              "api": "default_element_tmw_a0001"
+            }
+          },
+          "comp": {},
+          "roto": {},
+          "paint": {},
+          "pcomp": {}
+        },
+        "workfile": {
+          "default": {
             "create": {}
           }
         }
@@ -313,9 +436,35 @@
       "mm": {
         "cache": {},
         "element": {
+          "mm": {
+            "create": {
+              "api": "default_element_mm_a0001"
+            }
+          },
+          "cam": {
+            "create": {
+              "api": "default_element_cam_a0001"
+            }
+          },
           "plt": {
             "create": {
               "api": "default_element_plt_a0001"
+            }
+          },
+          "tmw": {
+            "create": {
+              "api": "default_element_tmw_a0001"
+            },
+            "export": {
+              "api": "default_element_tmw_a0001"
+            }
+          },
+          "pcomp": {
+            "create": {
+              "api": "default_element_pcomp_a0001"
+            },
+            "export": {
+              "api": "default_element_pcomp_a0001"
             }
           }
         },
@@ -325,9 +474,92 @@
           }
         }
       },
+      "mp": {
+        "cache": {},
+        "element": {
+          "mp": {
+            "create": {
+              "api": "default_element_mp_a0001"
+            },
+            "export": {
+              "api": "default_element_mp_a0001"
+            }
+          },
+          "ani": {
+            "create": {
+              "api": "default_element_ani_a0001"
+            }
+          },
+          "cam": {
+            "create": {
+              "api": "default_element_cam_a0001"
+            }
+          },
+          "plt": {
+            "create": {
+              "api": "default_element_plt_a0001"
+            }
+          },
+          "roto": {
+            "create": {
+              "api": "default_element_roto_a0001"
+            }
+          },
+          "paint": {
+            "create": {
+              "api": "default_element_paint_a0001"
+            }
+          },
+          "pcomp": {
+            "create": {
+              "api": "default_element_pcomp_a0001"
+            }
+          }
+        },
+        "workfile": {
+          "mp": {
+            "create": {}
+          }
+        }
+      },
+      "cpt": {
+        "cache": {},
+        "element": {
+          "ani": {
+            "create": {
+              "api": "default_element_ani_a0001"
+            }
+          },
+          "cam": {
+            "create": {
+              "api": "default_element_cam_a0001"
+            }
+          },
+          "mdl": {
+            "create": {
+              "api": "default_element_mdl_a0001"
+            }
+          },
+          "plt": {
+            "create": {
+              "api": "default_element_plt_a0001"
+            }
+          }
+        },
+        "workfile": {
+          "cpt": {
+            "create": {}
+          }
+        }
+      },
       "key": {
         "cache": {},
         "element": {
+          "cam": {
+            "create": {
+              "api": "default_element_cam_a0001"
+            }
+          },
           "key": {
             "create": {
               "api": "default_element_key_a0001"
@@ -336,9 +568,34 @@
               "api": "default_element_key_a0001"
             }
           },
+          "mdl": {
+            "create": {
+              "api": "default_element_mdl_a0001"
+            }
+          },
           "plt": {
             "create": {
               "api": "default_element_plt_a0001"
+            }
+          },
+          "comp": {
+            "create": {
+              "api": "default_element_comp_a0001"
+            }
+          },
+          "roto": {
+            "create": {
+              "api": "default_element_roto_a0001"
+            }
+          },
+          "paint": {
+            "create": {
+              "api": "default_element_paint_a0001"
+            }
+          },
+          "pcomp": {
+            "create": {
+              "api": "default_element_pcomp_a0001"
             }
           }
         },
@@ -351,6 +608,11 @@
       "tmw": {
         "cache": {},
         "element": {
+          "cam": {
+            "create": {
+              "api": "default_element_cam_a0001"
+            }
+          },
           "plt": {
             "create": {
               "api": "default_element_plt_a0001"
@@ -363,6 +625,21 @@
             "export": {
               "api": "default_element_tmw_a0001"
             }
+          },
+          "roto": {
+            "create": {
+              "api": "default_element_roto_a0001"
+            }
+          },
+          "paint": {
+            "create": {
+              "api": "default_element_paint_a0001"
+            }
+          },
+          "pcomp": {
+            "create": {
+              "api": "default_element_pcomp_a0001"
+            }
           }
         },
         "workfile": {
@@ -374,12 +651,36 @@
       "comp": {
         "cache": {},
         "element": {
+          "mp": {
+            "create": {
+              "api": "default_element_mp_a0001"
+            },
+            "export": {
+              "api": "default_element_mp_a0001"
+            }
+          },
+          "ani": {
+            "create": {
+              "api": "default_element_ani_a0001"
+            }
+          },
           "cam": {
             "create": {
               "api": "default_element_cam_a0001",
               "checked": true
             }
           },
+          "cpt": {},
+          "efx": {},
+          "key": {
+            "create": {
+              "api": "default_element_key_a0001"
+            },
+            "export": {
+              "api": "default_element_key_a0001"
+            }
+          },
+          "lgt": {},
           "mdl": {
             "create": {
               "api": "default_element_mdl_a0001",
@@ -398,10 +699,12 @@
               "checked": true
             }
           },
+          "rig": {},
+          "srf": {},
+          "tex": {},
           "tmw": {
             "create": {
-              "api": "default_element_tmw_a0001",
-              "checked": true
+              "api": "default_element_tmw_a0001"
             }
           },
           "comp": {
@@ -414,14 +717,28 @@
               "checked": true
             }
           },
-          "pcomp": {
+          "roto": {
             "create": {
-              "api": "default_element_pcomp_a0001",
-              "checked": true
+              "api": "default_element_roto_a0001"
             },
             "export": {
-              "api": "default_element_pcomp_a0001",
-              "checked": true
+              "api": "default_element_roto_a0001"
+            }
+          },
+          "paint": {
+            "create": {
+              "api": "default_element_paint_a0001"
+            },
+            "export": {
+              "api": "default_element_paint_a0001"
+            }
+          },
+          "pcomp": {
+            "create": {
+              "api": "default_element_pcomp_a0001"
+            },
+            "export": {
+              "api": "default_element_pcomp_a0001"
             }
           }
         },
@@ -434,6 +751,16 @@
       "roto": {
         "cache": {},
         "element": {
+          "key": {
+            "create": {
+              "api": "default_element_key_a0001"
+            }
+          },
+          "mdl": {
+            "create": {
+              "api": "default_element_mdl_a0001"
+            }
+          },
           "plt": {
             "create": {
               "api": "default_element_plt_a0001"
@@ -447,9 +774,6 @@
           "tmw": {
             "create": {
               "api": "default_element_tmw_a0001"
-            },
-            "export": {
-              "api": "default_element_tmw_a0001"
             }
           },
           "roto": {
@@ -461,9 +785,8 @@
             }
           },
           "paint": {
-            "export": {
-              "api": "default_element_paint_a0001",
-              "checked": true
+            "create": {
+              "api": "default_element_paint_a0001"
             }
           }
         },
@@ -476,9 +799,34 @@
       "paint": {
         "cache": {},
         "element": {
+          "cam": {
+            "create": {
+              "api": "default_element_cam_a0001"
+            }
+          },
+          "key": {
+            "create": {
+              "api": "default_element_key_a0001"
+            }
+          },
+          "mdl": {
+            "create": {
+              "api": "default_element_mdl_a0001"
+            }
+          },
           "plt": {
             "create": {
               "api": "default_element_plt_a0001"
+            }
+          },
+          "comp": {
+            "create": {
+              "api": "default_element_comp_a0001"
+            }
+          },
+          "roto": {
+            "create": {
+              "api": "default_element_roto_a0001"
             }
           },
           "paint": {
@@ -487,6 +835,11 @@
             },
             "export": {
               "api": "default_element_paint_a0001"
+            }
+          },
+          "pcomp": {
+            "create": {
+              "api": "default_element_pcomp_a0001"
             }
           }
         },
@@ -499,30 +852,72 @@
       "pcomp": {
         "cache": {},
         "element": {
+          "mm": {
+            "create": {
+              "api": "default_element_mm_a0001"
+            }
+          },
+          "mp": {
+            "create": {
+              "api": "default_element_mp_a0001"
+            }
+          },
+          "ani": {
+            "create": {
+              "api": "default_element_ani_a0001"
+            }
+          },
+          "cam": {
+            "create": {
+              "api": "default_element_cam_a0001"
+            }
+          },
+          "key": {
+            "create": {
+              "api": "default_element_key_a0001"
+            }
+          },
+          "mdl": {
+            "create": {
+              "api": "default_element_mdl_a0001"
+            }
+          },
+          "plt": {
+            "create": {
+              "api": "default_element_plt_a0001"
+            }
+          },
           "ren": {
             "create": {
-              "api": "default_element_ren_a0001",
-              "checked": true
-            },
-            "export": {
-              "api": "default_element_ren_a0001",
-              "checked": true
+              "api": "default_element_ren_a0001"
             }
           },
           "tmw": {
-            "export": {
-              "api": "default_element_tmw_a0001",
-              "checked": true
+            "create": {
+              "api": "default_element_tmw_a0001"
+            }
+          },
+          "comp": {
+            "create": {
+              "api": "default_element_comp_a0001"
+            }
+          },
+          "roto": {
+            "create": {
+              "api": "default_element_roto_a0001"
+            }
+          },
+          "paint": {
+            "create": {
+              "api": "default_element_paint_a0001"
             }
           },
           "pcomp": {
             "create": {
-              "api": "default_element_pcomp_a0001",
-              "checked": true
+              "api": "default_element_pcomp_a0001"
             },
             "export": {
-              "api": "default_element_pcomp_a0001",
-              "checked": true
+              "api": "default_element_pcomp_a0001"
             }
           }
         },
@@ -553,6 +948,12 @@
               "checked": true
             }
           },
+          "cpt": {},
+          "key": {
+            "create": {
+              "api": "default_element_key_a0001"
+            }
+          },
           "mdl": {
             "create": {
               "api": "default_element_mdl_a0001",
@@ -583,6 +984,16 @@
               "checked": true
             }
           },
+          "roto": {
+            "create": {
+              "api": "default_element_roto_a0001"
+            }
+          },
+          "paint": {
+            "create": {
+              "api": "default_element_paint_a0001"
+            }
+          },
           "pcomp": {
             "create": {
               "api": "default_element_pcomp_a0001",
@@ -610,6 +1021,36 @@
         },
         "workfile": {
           "mp": {
+            "create": {}
+          }
+        }
+      },
+      "sb": {
+        "cache": {},
+        "element": {
+          "sb": {
+            "export": {
+              "api": "default_element_sb_a0001"
+            }
+          }
+        },
+        "workfile": {
+          "sb": {
+            "create": {}
+          }
+        }
+      },
+      "cpt": {
+        "cache": {},
+        "element": {
+          "cpt": {
+            "export": {
+              "api": "default_element_cpt_a0001"
+            }
+          }
+        },
+        "workfile": {
+          "cpt": {
             "create": {}
           }
         }
@@ -658,21 +1099,95 @@
           }
         },
         "element": {
+          "mm": {
+            "create": {
+              "api": "default_element_mm_a0001"
+            }
+          },
+          "ani": {
+            "create": {
+              "api": "default_element_ani_a0001"
+            }
+          },
+          "cam": {
+            "create": {
+              "api": "default_element_cam_a0001"
+            }
+          },
           "efx": {
+            "create": {
+              "api": "default_element_efx_a0001"
+            },
             "export": {
-              "api": "default_element_efx_a0001",
-              "checked": true
+              "api": "default_element_efx_a0001"
+            }
+          },
+          "lgt": {
+            "create": {
+              "api": "default_element_lgt_a0001"
+            }
+          },
+          "mdl": {
+            "create": {
+              "api": "default_element_mdl_a0001"
             }
           },
           "ren": {
             "export": {
-              "api": "default_element_ren_a0001",
-              "checked": true
+              "api": "default_element_ren_a0001"
+            }
+          },
+          "srf": {
+            "create": {
+              "api": "default_element_srf_a0001"
             }
           }
         },
         "workfile": {
           "efx": {
+            "create": {}
+          }
+        }
+      },
+      "lgt": {
+        "cache": {},
+        "element": {
+          "mm": {
+            "create": {
+              "api": "default_element_mm_a0001"
+            }
+          },
+          "ani": {
+            "create": {
+              "api": "default_element_ani_a0001"
+            }
+          },
+          "cam": {
+            "create": {
+              "api": "default_element_cam_a0001"
+            }
+          },
+          "efx": {
+            "create": {
+              "api": "default_element_efx_a0001"
+            },
+            "export": {
+              "api": "default_element_efx_a0001"
+            }
+          },
+          "lgt": {
+            "create": {
+              "api": "default_element_lgt_a0001"
+            }
+          },
+          "mdl": {
+            "create": {
+              "api": "default_element_mdl_a0001"
+            }
+          }
+        },
+        "workfile": {
+          "lgt": {
             "create": {}
           }
         }

@@ -11,9 +11,9 @@ from sqlalchemy.engine.url import URL
 from sqlalchemy.orm import sessionmaker
 
 import dayu_path_patch
-from config import (DAYU_DB_NAME, DAYU_CONFIG_STATIC_PATH, DayuDatabaseConfig, \
-                    DayuDatabaseStatusNotConnect, \
-                    DayuDatabaseStatusConnected)
+from config.const import DAYU_DB_NAME, DAYU_CONFIG_STATIC_PATH
+from config import DayuDatabaseConfig
+from status import DayuDatabaseStatusNotConnect, DayuDatabaseStatusConnected
 from deco import lazy
 
 _database_context = {}

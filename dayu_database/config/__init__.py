@@ -1,13 +1,8 @@
-#!/usr/bin/env python
+# !/usr/bin/env python
 # -*- encoding: utf-8 -*-
+from dayu_database.status import DayuDatabaseStatusNotConnect
 
 __author__ = 'andyguo'
-
-DAYU_DB_ROOT_FOLDER_NAME = '.!0x5f3759df_this_is_a_magic_number_used_for_telling_which_atom_is_the_root'
-
-DAYU_DB_NAME = 'DAYU_DB_NAME'
-DAYU_APP_NAME = 'DAYU_APP_NAME'
-DAYU_CONFIG_STATIC_PATH = 'DAYU_CONFIG_STATIC_PATH'
 
 # 所有可能的分支条件，用于批量创建json config 的成绩结构。用户也可以通过手动创建文件的方式进行添加。
 DECISION_TREE = [['maya', 'nuke', 'houdini', 'hiero'],
@@ -15,14 +10,6 @@ DECISION_TREE = [['maya', 'nuke', 'houdini', 'hiero'],
                  ['element', 'workfile', 'cache', 'dailies'],
                  ['plt', 'mod', 'cam', 'ani', 'pcmp', 'tmw'],
                  ['create', 'export']]
-
-
-class DayuDatabaseStatusNotConnect(object):
-    pass
-
-
-class DayuDatabaseStatusConnected(object):
-    pass
 
 
 class DayuDatabaseConfig(dict):
@@ -74,7 +61,7 @@ class DayuDatabaseConfig(dict):
     def from_json(self, path):
         import json
         with open(path, 'r') as jf:
-            self.update(json.load(jf))
+            self.update(**json.load(jf))
 
     def from_env(self):
         import os
@@ -82,9 +69,4 @@ class DayuDatabaseConfig(dict):
             self[k] = os.environ.get(k, self[k])
 
     def from_mapping(self, **kwargs):
-        self.update(kwargs)
-
-
-if __name__ == '__main__':
-    config = DayuDatabaseConfig()
-    print config
+        self.update(**kwargs)

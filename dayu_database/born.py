@@ -33,7 +33,7 @@ __doc__ = \
 import json
 
 from dayu_path import DayuPath
-from config import DAYU_CONFIG_STATIC_PATH
+from config.const import DAYU_CONFIG_STATIC_PATH
 
 import util
 import os

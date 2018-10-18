@@ -64,13 +64,13 @@ def get_root_folder():
     '''
     import dayu_database
     import table
-    import config
+    from config.const import DAYU_DB_ROOT_FOLDER_NAME
     session = dayu_database.get_session()
     try:
         return session.query(table.FOLDER).filter(
-                table.FOLDER.name == config.DAYU_DB_ROOT_FOLDER_NAME).one()
+                table.FOLDER.name == DAYU_DB_ROOT_FOLDER_NAME).one()
     except:
-        root = table.FOLDER(name=config.DAYU_DB_ROOT_FOLDER_NAME)
+        root = table.FOLDER(name=DAYU_DB_ROOT_FOLDER_NAME)
         session.add(root)
         session.commit()
         return root
@@ -82,8 +82,8 @@ def current_user_name():
     :return: string
     '''
     import getpass
-    import config
-    return os.getenv(config.DAYU_DB_NAME) or getpass.getuser()
+    from config.const import DAYU_DB_NAME
+    return os.getenv(DAYU_DB_NAME) or getpass.getuser()
 
 
 def get_current_user():
@@ -408,6 +408,7 @@ def create_project(name, template_or_project=None, custom_storage=None):
     asset_seq_grp = table.FOLDER(name='asset', label='Asset', parent=project_orm)
     seq_seq_grp = table.FOLDER(name='sequence', label='Sequence', parent=project_orm)
     metadata_seq_grp = table.FOLDER(name='metadata', label='Metadata', parent=project_orm)
+    reference_seq_grp = table.FOLDER(name='reference', label='Reference', parent=project_orm)
 
     asset_seq_dict = {'chr': 'Character',
                       'efx': 'Effects',
@@ -417,7 +418,8 @@ def create_project(name, template_or_project=None, custom_storage=None):
                       'std': 'Standard',
                       'asb': 'Assembly',
                       'cpt': 'Concept',
-                      'veh': 'Vehicle'}
+                      'veh': 'Vehicle',
+                      'sb' : 'Storyboard'}
 
     metadata_seq_dict = {'lds'   : 'Lens Data',
                          'env'   : 'Environment',
